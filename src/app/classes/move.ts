@@ -1,0 +1,8 @@
+export interface Move {
+    name: string;
+    description: string;
+    pp: number;
+    damage: number;
+    accuracy: number;
+    type: string;
+}
