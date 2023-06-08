@@ -1,5 +1,7 @@
 .pokemon-card-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  grid-gap: 20px;
+  grid-template-columns: repeat(auto-fit, 400px);
+  background-color: rgb(240, 230, 230);
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
 }

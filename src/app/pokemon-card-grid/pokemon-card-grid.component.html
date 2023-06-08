@@ -1,5 +1,6 @@
 <div class="pokemon-card-grid">
-  <ng-container *ngFor="let set of pokemonSets">
-    <app-pokemon-card [pokemonSet]="set"></app-pokemon-card>
-  </ng-container>
+  <app-pokemon-card
+    *ngFor="let set of pokemonSets"
+    [pokemonSet]="set"
+  ></app-pokemon-card>
 </div>

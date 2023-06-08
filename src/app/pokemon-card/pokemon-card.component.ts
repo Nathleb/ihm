@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, SimpleChanges } from '@angular/core';
 import { PokemonSet } from '../classes/pokemonSet';
 
 @Component({
@@ -8,7 +8,5 @@ import { PokemonSet } from '../classes/pokemonSet';
 })
 
 export class PokemonCardComponent {
-  constructor() { }
-
   @Input() pokemonSet!: PokemonSet;
 }

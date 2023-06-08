@@ -1,10 +1,10 @@
 .pokemon-grid {
   display: grid;
-  grid-template-columns: repeat(16, 1fr);
+  grid-template-columns: repeat(12, 1fr);
   grid-template-rows: repeat(8, 1fr);
-  grid-column-gap: 0px;
-  grid-row-gap: 0px;
   background-color: rgb(14, 103, 181);
+  width: 400px;
+  height: 250px;
 
   & .sprite {
     grid-area: 1 / 1 / 4 / 4;
