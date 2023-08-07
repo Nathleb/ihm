@@ -1,0 +1,36 @@
+<button mat-raised-button color="accent" (click)="createRoom()">
+  Create Room
+</button>
+<mat-card *ngFor="let room of rooms">
+  <button (click)="joinRoom(room.id)">
+    Join {{ room.name }}'s room {{ room.players.length }}/{{ room.size }}
+  </button>
+</mat-card>
+<button mat-raised-button color="primary" (click)="refresh()">refresh</button>
+
+<div *ngIf="joinedRoom.id !== DEFAULT.NO_ROOM">
+  <mat-card>
+    <mat-card-content>{{ joinedRoom.name }}'s room</mat-card-content>
+    <div *ngFor="let player of joinedRoom.players">
+      {{ player.pseudo }}
+    </div>
+
+    <app-pokemon-card-grid
+      [pokemonSets]="player.toChoseFrom"
+      [isPool]="true"
+      (picked)="nextPick(joinedRoom.id, $event)"
+    ></app-pokemon-card-grid>
+
+    <app-pokemon-card-grid
+      [pokemonSets]="player.team"
+      (picked)="nextPick(joinedRoom.id, $event)"
+    ></app-pokemon-card-grid>
+    <button
+      mat-raised-button
+      color="accent"
+      (click)="nextBooster(joinedRoom.id)"
+    >
+      Launch
+    </button>
+  </mat-card>
+</div>

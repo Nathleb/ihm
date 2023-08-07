@@ -1,0 +1,14 @@
+<mat-list>
+  <mat-card *ngFor="let set of pokemonSets">
+    <app-pokemon-card [pokemonSet]="set"> </app-pokemon-card>
+    <button
+      *ngIf="isPool"
+      mat-raised-button
+      color="accent"
+      (click)="pick(set.name)"
+    >
+      Pick
+    </button>
+    <mat-divider></mat-divider>
+  </mat-card>
+</mat-list>

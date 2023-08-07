@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { PokemonSet } from './classes/pokemonSet';
+import { PokemonSet } from './interfaces/pokemonSet';
 import { map, Observable } from 'rxjs';
 
 @Injectable({

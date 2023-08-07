@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { KeyWord } from 'src/app/classes/keyWord';
+import { KeyWord } from 'src/app/pokemon/interfaces/keyWord';
 
 @Component({
   selector: 'app-pokemon-card-keywords',

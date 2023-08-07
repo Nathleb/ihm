@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Move } from 'src/app/classes/move';
+import { Move } from 'src/app/pokemon/interfaces/move';
 
 @Component({
   selector: 'app-pokemon-card-moves',
