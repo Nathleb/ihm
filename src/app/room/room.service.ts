@@ -28,11 +28,15 @@ export class RoomService {
         this.socket.emit('joinRoom', JSON.stringify({ roomId }));
     }
 
-    nextBooster(roomId: string) {
-        this.socket.emit('nextBooster', JSON.stringify({ roomId }));
+    startGame(roomId: string) {
+        this.socket.emit('startGame', JSON.stringify({ roomId }));
     }
 
     nextPick(roomId: string, pickedPokemonName: string) {
         this.socket.emit('nextPick', JSON.stringify({ roomId, pickedPokemonName }));
+    }
+
+    quitRoom() {
+        this.socket.emit('quitRoom');
     }
 }

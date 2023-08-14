@@ -1,33 +1,30 @@
-<mat-card class="example-card">
-  <mat-card-header>
-    <mat-card-title-group>
-      <mat-card-title>{{ pokemonSet.name }}</mat-card-title>
-      <mat-card-subtitle>{{ pokemonSet.role }}</mat-card-subtitle>
-      <img alt="{{ pokemonSet.name }}" src="{{ pokemonSet.sprite }}" />
-    </mat-card-title-group>
-  </mat-card-header>
-  <mat-card-content>
-    <!-- <app-pokemon-card-types
-    [types]="pokemonSet.types"
-    [tera]="pokemonSet.teraType.toLowerCase()"
-    class="types"
-  >
-  </app-pokemon-card-types>
+<mat-card-header>
+  <mat-card-title-group>
+    <mat-card-title>{{ pokemonSet.name }}</mat-card-title>
+    <mat-card-subtitle>{{ pokemonSet.role }}</mat-card-subtitle>
+  </mat-card-title-group>
+  <img alt="{{ pokemonSet.name }}" src="{{ pokemonSet.sprite }}" />
+  <app-pokemon-card-stats
+    [evs]="pokemonSet.evs"
+    [ivs]="pokemonSet.ivs"
+    [baseStats]="pokemonSet.baseStats"
+  ></app-pokemon-card-stats>
+</mat-card-header>
+<mat-card-content>
+  <!-- <app-pokemon-card-types
+      [types]="pokemonSet.types"
+      [tera]="pokemonSet.teraType.toLowerCase()"
+    >
+    </app-pokemon-card-types> -->
   <app-pokemon-card-keywords
     [item]="pokemonSet.item"
     [ability]="pokemonSet.ability"
     class="keyword"
   >
-  </app-pokemon-card-keywords> -->
-    <app-pokemon-card-stats
-      [evs]="pokemonSet.evs"
-      [ivs]="pokemonSet.ivs"
-      [baseStats]="pokemonSet.baseStats"
-      class="stats"
-    ></app-pokemon-card-stats>
-    <!-- <app-pokemon-card-moves
+  </app-pokemon-card-keywords>
+
+  <app-pokemon-card-moves
     class="moves"
     [moves]="pokemonSet.moves"
-  ></app-pokemon-card-moves> -->
-  </mat-card-content>
-</mat-card>
+  ></app-pokemon-card-moves>
+</mat-card-content>

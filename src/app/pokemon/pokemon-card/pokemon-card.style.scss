@@ -1,0 +1,16 @@
+mat-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  padding: 0;
+  mat-card-title-group {
+    width: fit-content;
+    height: 100%;
+  }
+  img {
+    height: 80%;
+  }
+}
+app-pokemon-card-stats {
+  width: 60%;
+}

@@ -10,13 +10,16 @@ import { PokemonCardTypesComponent } from './pokemon/pokemon-card/pokemon-card-t
 import { PokemonCardMovesComponent } from './pokemon/pokemon-card/pokemon-card-moves/pokemon-card-moves.component';
 import { PokemonCardKeywordsComponent } from './pokemon/pokemon-card/pokemon-card-keywords/pokemon-card-keywords.component';
 import { PokemonCardStatsComponent } from './pokemon/pokemon-card/pokemon-card-stats/pokemon-card-stats.component';
-import { RoomTestComponent } from './room/room-test/room-test.component';
+import { StatProgressBarComponent } from './pokemon/pokemon-card/pokemon-card-stats/stat-progress-bar/stat-progress-bar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { AccueilComponent } from './accueil/accueil.component';
+import { RoomComponent } from './room/room.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,9 @@ import { MatListModule } from '@angular/material/list';
     PokemonCardMovesComponent,
     PokemonCardKeywordsComponent,
     PokemonCardStatsComponent,
-    RoomTestComponent
+    AccueilComponent,
+    RoomComponent,
+    StatProgressBarComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,7 +41,8 @@ import { MatListModule } from '@angular/material/list';
     BrowserAnimationsModule,
     MatButtonModule,
     MatCardModule,
-    MatListModule
+    MatGridListModule,
+    MatListModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
