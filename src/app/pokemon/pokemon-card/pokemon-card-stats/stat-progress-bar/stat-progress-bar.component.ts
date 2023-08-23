@@ -6,21 +6,19 @@ import { Component, Input, SimpleChanges } from '@angular/core';
   styleUrls: ['./stat-progress-bar.component.scss']
 })
 export class StatProgressBarComponent {
-  @Input() value: number = 50;
+  @Input() value: number;
+  @Input() stat: string;
 
 
   ngOnChanges(simpleChanges: SimpleChanges) {
     if (simpleChanges['value']) {
-      this.value = (simpleChanges['value'].currentValue / 400) * 100;
+      this.value = (simpleChanges['value'].currentValue / 125) * 100;
     }
   }
 
-  getColor() {
-    const percentage = this.value;
-    const red = Math.min(255, Math.floor(percentage * 255 / 50));
-    const green = Math.min(255, Math.floor((100 - percentage) * 255 / 50));
-    const blue = 0;
-
-    return `rgb(${red}, ${green}, ${blue})`;
+  getColor(): string {
+    const red = Math.round(255 * this.value / 125);
+    const green = 255 - red;
+    return `rgb(${red}, ${green}, 0)`;
   }
 }

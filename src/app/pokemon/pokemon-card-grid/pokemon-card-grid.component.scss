@@ -1,7 +1,41 @@
 .mat-card-pokemon {
   height: 100%;
   width: 100%;
-  overflow: scroll;
   border: 1px solid rgba(0, 0, 0, 0.12);
   border-radius: 4px;
+  app-pokemon-card {
+    width: 100%;
+  }
+}
+
+.grid-container {
+  display: grid;
+}
+
+/* Small screens */
+@media (max-width: 700px) {
+  .grid-container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+/* Medium screens */
+@media (min-width: 701px) and (max-width: 1100px) {
+  .grid-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Large screens */
+@media (min-width: 1101px) and (max-width: 1600px) {
+  .grid-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Very Large screens */
+@media (min-width: 1601px) {
+  .grid-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }

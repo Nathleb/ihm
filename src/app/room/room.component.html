@@ -3,16 +3,18 @@
   {{ player.pseudo }}
 </div>
 
-<app-pokemon-card-grid
-  [pokemonSets]="player.toChoseFrom"
-  [hasPicked]="player.hasPicked"
-  (picked)="nextPick(room.id, $event)"
-></app-pokemon-card-grid>
+<ng-container *ngIf="player.sit >= 0">
+  <app-pokemon-card-grid
+    [pokemonSets]="player.toChoseFrom"
+    [hasPicked]="player.hasPicked"
+    (picked)="nextPick(room.id, $event)"
+  ></app-pokemon-card-grid>
 
-<app-pokemon-card-grid
-  [pokemonSets]="player.team"
-  (picked)="nextPick(room.id, $event)"
-></app-pokemon-card-grid>
-<button mat-raised-button color="accent" (click)="startGame(room.id)">
-  Launch
-</button>
+  <app-pokemon-card-grid
+    [pokemonSets]="player.team"
+    (picked)="nextPick(room.id, $event)"
+  ></app-pokemon-card-grid>
+  <button mat-raised-button color="accent" (click)="startGame(room.id)">
+    Launch
+  </button>
+</ng-container>

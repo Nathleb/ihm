@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, NgZone } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DEFAULT } from '../pokemon/interfaces/enums/default.enum';
 import { PokemonSet } from '../pokemon/interfaces/pokemonSet';
@@ -12,7 +12,7 @@ import { RoomService } from './room.service';
   styleUrls: ['./room.component.scss']
 })
 export class RoomComponent {
-  constructor(private roomService: RoomService, private router: Router, private route: ActivatedRoute) {
+  constructor(private roomService: RoomService, private router: Router, private route: ActivatedRoute, private ngZone: NgZone) {
   }
 
   @Input() room: RoomDTO;
@@ -55,10 +55,15 @@ export class RoomComponent {
     });
 
     this.roomService.socket.on("nextPick", (player: PlayerDTO) => {
-      player.toChoseFrom = this.deserializePokemonSets(player.toChoseFrom);
-      player.team = this.deserializePokemonSets(player.team);
+      this.ngZone.run(() => {
+        const updatedPlayer: PlayerDTO = {
+          ...player,
+          toChoseFrom: this.deserializePokemonSets(player.toChoseFrom),
+          team: this.deserializePokemonSets(player.team)
+        };
 
-      this.player = { ...player };
+        this.player = updatedPlayer;
+      });
     });
 
     this.roomService.socket.on("error", (error: string) => {
@@ -84,11 +89,14 @@ export class RoomComponent {
   }
 
   deserializePokemonSets(pokemonSets: PokemonSet[]): PokemonSet[] {
-    return pokemonSets.map(pokemonSet => ({
-      ...pokemonSet,
-      baseStats: pokemonSet.baseStats ? new Map(Object.entries(pokemonSet.baseStats)) : new Map<string, number>(),
-      evs: pokemonSet.evs ? new Map(Object.entries(pokemonSet.evs)) : new Map<string, number>(),
-      ivs: pokemonSet.ivs ? new Map(Object.entries(pokemonSet.ivs)) : new Map<string, number>()
-    }));
+
+    return pokemonSets.map(pokemonSet => {
+      return {
+        ...pokemonSet,
+        baseStats: pokemonSet.baseStats ? new Map(Object.entries(pokemonSet.baseStats)) : new Map<string, number>(),
+        evs: pokemonSet.evs ? new Map(Object.entries(pokemonSet.evs)) : new Map<string, number>(),
+        ivs: pokemonSet.ivs ? new Map(Object.entries(pokemonSet.ivs)) : new Map<string, number>()
+      };
+    });
   }
 }

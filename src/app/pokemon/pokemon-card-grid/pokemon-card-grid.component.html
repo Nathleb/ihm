@@ -1,17 +1,15 @@
-<mat-grid-list cols="3" rowHeight="2:1">
-  <mat-grid-tile *ngFor="let set of pokemonSets">
-    <mat-card class="mat-card-pokemon">
-      <app-pokemon-card [pokemonSet]="set"> </app-pokemon-card>
-      <mat-card-actions
-        ><button
-          *ngIf="!hasPicked"
-          mat-raised-button
-          color="accent"
-          (click)="pick(set.name)"
-        >
-          Pick
-        </button></mat-card-actions
+<div class="grid-container">
+  <mat-card class="mat-card-pokemon" *ngFor="let set of pokemonSets">
+    <app-pokemon-card [pokemonSet]="set"> </app-pokemon-card>
+    <mat-card-actions
+      ><button
+        *ngIf="!hasPicked"
+        mat-raised-button
+        color="accent"
+        (click)="pick(set.name)"
       >
-    </mat-card>
-  </mat-grid-tile>
-</mat-grid-list>
+        Pick
+      </button></mat-card-actions
+    >
+  </mat-card>
+</div>

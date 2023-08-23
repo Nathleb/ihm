@@ -1,4 +1,5 @@
-<app-stat-progress-bar [value]="10"></app-stat-progress-bar>
-<app-stat-progress-bar [value]="100"></app-stat-progress-bar>
-<app-stat-progress-bar [value]="60"></app-stat-progress-bar>
-<app-stat-progress-bar [value]="220"></app-stat-progress-bar>
+<app-stat-progress-bar
+  *ngFor="let key of baseStats.keys()"
+  [stat]="key"
+  [value]="baseStats.get(key)!"
+></app-stat-progress-bar>

@@ -1,16 +1,38 @@
 mat-card-header {
   display: flex;
+  width: 100%;
+  height: 30%;
+  flex-direction: row;
   align-items: center;
-  justify-content: left;
+  justify-content: space-between;
   padding: 0;
-  mat-card-title-group {
-    width: fit-content;
+  div {
+    margin-left: 5%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
     height: 100%;
+    mat-card-title-group {
+      width: fit-content;
+      height: 100%;
+      white-space: nowrap;
+    }
+    img {
+      height: 100%;
+    }
   }
-  img {
-    height: 80%;
+
+  app-pokemon-card-stats {
+    margin-right: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30%;
+    height: 90%;
   }
 }
-app-pokemon-card-stats {
-  width: 60%;
+
+::ng-deep .mat-mdc-card-header-text {
+  display: none;
 }

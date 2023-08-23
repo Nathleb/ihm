@@ -7,11 +7,10 @@ import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 })
 export class PokemonCardStatsComponent implements OnChanges {
 
-  @Input() evs: Map<string, number> = new Map();
-  @Input() ivs: Map<string, number> = new Map();
-  @Input() baseStats: Map<string, number> = new Map();
+  @Input() evs: Map<string, number>;
+  @Input() ivs: Map<string, number>;
+  @Input() baseStats: Map<string, number>;
 
   ngOnChanges(simpleChanges: SimpleChanges) {
-    console.log(simpleChanges);
   }
 }
