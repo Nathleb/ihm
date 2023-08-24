@@ -1,5 +1,8 @@
-<mat-progress-bar
-  mode="determinate"
-  value="{{ value }}"
-  [style.--mdc-linear-progress-active-indicator-color]="getColor()"
-></mat-progress-bar>
+<div class="progress-bar" [title]="realValue">
+  <span>{{ stat }} : </span
+  ><mat-progress-bar
+    mode="determinate"
+    value="{{ value }}"
+    [style.--mdc-linear-progress-active-indicator-color]="getColor()"
+  ></mat-progress-bar>
+</div>

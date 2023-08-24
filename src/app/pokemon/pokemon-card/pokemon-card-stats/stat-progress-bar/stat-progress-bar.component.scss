@@ -1,4 +1,15 @@
 .progress-bar {
-  height: 4px;
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 100%;
+
+  span {
+    font-size: 80%;
+    white-space: nowrap;
+    width: 30%;
+  }
+  mat-progress-bar {
+    width: 70%;
+  }
 }

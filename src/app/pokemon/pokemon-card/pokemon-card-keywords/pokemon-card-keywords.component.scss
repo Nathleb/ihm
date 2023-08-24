@@ -1,0 +1,27 @@
+.keyword-container {
+  display: flex;
+  white-space: nowrap;
+  justify-content: space-between;
+
+  .content {
+    width: 50%;
+    box-sizing: border-box;
+    display: flex;
+    span {
+      text-align: center;
+      display: block;
+      border: 2px outset rgba(0, 0, 0, 0.315);
+      padding: 0 3%;
+    }
+    .tera {
+      border: 2px outset rgb(255, 251, 0);
+    }
+  }
+
+  .right {
+    justify-content: right;
+    span {
+      width: 33%;
+    }
+  }
+}

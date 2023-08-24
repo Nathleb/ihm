@@ -1,6 +1,16 @@
-<div>
-  {{ item.name }}
-</div>
-<div>
-  {{ ability.name }}
+<div class="keyword-container">
+  <div class="content">
+    <span>{{ item.name }}</span>
+    <span>{{ ability.name }}</span>
+  </div>
+  <div class="content right">
+    <span
+      *ngFor="let type of types"
+      [style.background-color]="getColor(type)"
+      >{{ type }}</span
+    >
+    <span class="tera" [style.background-color]="getColor(tera)">{{
+      tera
+    }}</span>
+  </div>
 </div>

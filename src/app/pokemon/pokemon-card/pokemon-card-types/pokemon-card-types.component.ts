@@ -6,8 +6,6 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./pokemon-card-types.component.scss']
 })
 export class PokemonCardTypesComponent {
-
-
-  @Input() types: Array<string> = new Array<string>();
-  @Input() tera: string = "";
+  @Input() types: Array<string>;
+  @Input() tera: string;
 }

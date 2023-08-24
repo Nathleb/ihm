@@ -7,18 +7,32 @@ import { Component, Input, SimpleChanges } from '@angular/core';
 })
 export class StatProgressBarComponent {
   @Input() value: number;
+  realValue: number;
   @Input() stat: string;
+
+  statDico: { [index: string]: string; } = {
+    hp: "hp",
+    attack: "atk",
+    defense: "def",
+    "special-attack": "spAtk",
+    "special-defense": "spDef",
+    speed: "spd"
+  };
 
 
   ngOnChanges(simpleChanges: SimpleChanges) {
-    if (simpleChanges['value']) {
-      this.value = (simpleChanges['value'].currentValue / 125) * 100;
+    if (simpleChanges["value"]) {
+      this.realValue = simpleChanges['value'].currentValue;
+      this.value = (simpleChanges['value'].currentValue / 180) * 100;
+    }
+    if (simpleChanges["stat"]) {
+      this.stat = this.statDico[simpleChanges["stat"].currentValue];
     }
   }
 
   getColor(): string {
-    const red = Math.round(255 * this.value / 125);
+    const red = Math.round(255 * this.value / 100);
     const green = 255 - red;
-    return `rgb(${red}, ${green}, 0)`;
+    return `rgb(${red}, ${green}, 100)`;
   }
 }
