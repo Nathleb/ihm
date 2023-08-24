@@ -1,7 +1,6 @@
 .mat-card-pokemon {
   height: 100%;
   width: 100%;
-  border: 1px solid rgba(0, 0, 0, 0.12);
   border-radius: 4px;
   app-pokemon-card {
     width: 100%;
@@ -10,6 +9,8 @@
 
 .grid-container {
   display: grid;
+  column-gap: 0.3%;
+  row-gap: 0.3%;
 }
 
 /* Small screens */

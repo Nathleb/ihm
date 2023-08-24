@@ -5,6 +5,13 @@ import { PokemonSet } from '../pokemon/interfaces/pokemonSet';
 import { PlayerDTO } from './interfaces/dtos/player.dto';
 import { RoomDTO } from './interfaces/dtos/room.dto';
 import { RoomService } from './room.service';
+import {
+  CdkDragDrop,
+  moveItemInArray,
+  transferArrayItem,
+  CdkDrag,
+  CdkDropList,
+} from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-room',

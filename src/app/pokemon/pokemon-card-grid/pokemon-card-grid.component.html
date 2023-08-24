@@ -1,7 +1,13 @@
-<div class="grid-container">
-  <mat-card class="mat-card-pokemon" *ngFor="let set of pokemonSets">
+<div
+  cdkDropList
+  #toChoseFrom="cdkDropList"
+  [cdkDropListData]="pokemonSets"
+  (cdkDropListDropped)="drop($event)"
+  class="grid-container"
+>
+  <mat-card cdkDrag class="mat-card-pokemon" *ngFor="let set of pokemonSets">
     <app-pokemon-card [pokemonSet]="set"> </app-pokemon-card>
-    <mat-card-actions
+    <!-- <mat-card-actions
       ><button
         *ngIf="!hasPicked"
         mat-raised-button
@@ -10,6 +16,6 @@
       >
         Pick
       </button></mat-card-actions
-    >
+    > -->
   </mat-card>
 </div>

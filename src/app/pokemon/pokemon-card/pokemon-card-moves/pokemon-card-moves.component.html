@@ -1,3 +1,12 @@
-<div *ngFor="let move of moves">
-  {{ move.name }}
+<div class="grid-container">
+  <div
+    class="attack-capsule"
+    *ngFor="let move of moves"
+    [matTooltip]="getTooltip(move)"
+    [matTooltipShowDelay]="100"
+    [matTooltipHideDelay]="100"
+    [style.border-color]="getColor(move.type)"
+  >
+    {{ move.name }}
+  </div>
 </div>

@@ -1,16 +1,31 @@
 <div class="keyword-container">
   <div class="content">
-    <span>{{ item.name }}</span>
-    <span>{{ ability.name }}</span>
+    <span
+      [matTooltip]="item.description"
+      [matTooltipShowDelay]="100"
+      [matTooltipHideDelay]="100"
+      >{{ item.name }}</span
+    >
+    <span
+      [matTooltip]="ability.description"
+      [matTooltipShowDelay]="100"
+      [matTooltipHideDelay]="100"
+      >{{ ability.name }}</span
+    >
   </div>
-  <div class="content right">
+  <div class="content">
     <span
       *ngFor="let type of types"
       [style.background-color]="getColor(type)"
       >{{ type }}</span
     >
-    <span class="tera" [style.background-color]="getColor(tera)">{{
-      tera
-    }}</span>
+    <span
+      matBadge="T"
+      matBadgeColor="accent"
+      matBadgeSize="small"
+      class="tera"
+      [style.background-color]="getColor(tera)"
+      >{{ tera }}</span
+    >
   </div>
 </div>

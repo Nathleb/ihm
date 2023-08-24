@@ -8,9 +8,13 @@
     [pokemonSets]="player.toChoseFrom"
     [hasPicked]="player.hasPicked"
     (picked)="nextPick(room.id, $event)"
-  ></app-pokemon-card-grid>
+  >
+  </app-pokemon-card-grid>
 
   <app-pokemon-card-grid
+    cdkDropList
+    #team="cdkDropList"
+    [cdkDropListData]="player.team"
     [pokemonSets]="player.team"
     (picked)="nextPick(room.id, $event)"
   ></app-pokemon-card-grid>

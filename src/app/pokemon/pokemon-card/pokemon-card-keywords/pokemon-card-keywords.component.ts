@@ -1,5 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { KeyWord } from 'src/app/pokemon/interfaces/keyWord';
+import { colorTable } from '../../interfaces/colors/colorTable';
+
 
 @Component({
   selector: 'app-pokemon-card-keywords',
@@ -12,29 +14,10 @@ export class PokemonCardKeywordsComponent {
   @Input() types: Array<string>;
   @Input() tera: string;
 
-  colorTable: { [index: string]: string; } = {
-    normal: '#A8A77A',
-    fire: '#EE8130',
-    water: '#6390F0',
-    electric: '#F7D02C',
-    grass: '#7AC74C',
-    ice: '#96D9D6',
-    fighting: '#C22E28',
-    poison: '#A33EA1',
-    ground: '#E2BF65',
-    flying: '#A98FF3',
-    psychic: '#F95587',
-    bug: '#A6B91A',
-    rock: '#B6A136',
-    ghost: '#735797',
-    dragon: '#6F35FC',
-    dark: '#705746',
-    steel: '#B7B7CE',
-    fairy: '#D685AD',
-  };
+
 
   getColor(type: string): string {
 
-    return this.colorTable[type];
+    return colorTable[type];
   }
 }
