@@ -1,0 +1,23 @@
+<mat-card class="nickname-form">
+  <mat-card-header class="form-field-text">
+    <input
+      id="roomName"
+      class="form-control"
+      type="text"
+      matInput
+      placeholder="Cool nickname"
+      [(ngModel)]="nickname"
+      required
+      maxlength="30"
+    />
+  </mat-card-header>
+
+  <button
+    mat-raised-button
+    color="accent"
+    (click)="updateNickname()"
+    [disabled]="!formIsValid()"
+  >
+    Change nickname
+  </button>
+</mat-card>

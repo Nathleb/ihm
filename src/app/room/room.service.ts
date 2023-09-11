@@ -45,6 +45,10 @@ export class RoomService {
         this.socket.emit('isPlayerOwner', JSON.stringify({ roomId }));
     }
 
+    updateNickname(pseudo: string) {
+        this.socket.emit('updatePseudo', JSON.stringify({ pseudo }));
+    }
+
     quitRoom() {
         this.socket.emit('quitRoom');
     }

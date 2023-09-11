@@ -2,7 +2,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -33,6 +32,7 @@ import { TableSitsComponent } from './room/table-sits/table-sits.component';
 import { GameParametersFormComponent } from './accueil/game-parameters-form/game-parameters-form.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { RoomListComponent } from './accueil/room-list/room-list.component';
+import { NicknameFormComponent } from './accueil/nickname-form/nickname-form.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +50,7 @@ import { RoomListComponent } from './accueil/room-list/room-list.component';
     GameParametersFormComponent,
     ToolbarComponent,
     RoomListComponent,
+    NicknameFormComponent,
   ],
   imports: [
     BrowserModule,

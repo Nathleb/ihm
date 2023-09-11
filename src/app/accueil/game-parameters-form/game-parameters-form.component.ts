@@ -13,7 +13,7 @@ export class GameParametersFormComponent {
 
   ngOnInit() {
     this.parameters = {
-      roomName: '',
+      roomName: `Room-${crypto.randomUUID().slice(0, 4)}`,
       size: 8,
       pkmnPerBooster: 6,
       nbrBooster: 1
@@ -21,19 +21,17 @@ export class GameParametersFormComponent {
   }
 
   startGame() {
-    this.OnRoomCreation.emit(this.parameters);
+    if (this.formIsValid()) {
+      this.OnRoomCreation.emit(this.parameters);
+    }
   }
 
   formIsValid() {
-    console.log(this.parameters.pkmnPerBooster >= 1 &&
-      this.parameters.nbrBooster >= 1 &&
-      this.parameters.pkmnPerBooster * this.parameters.nbrBooster <= 18 &&
-      this.parameters.roomName.length > 3 && this.parameters.roomName.length < 50);
     return (
       this.parameters.pkmnPerBooster >= 1 &&
       this.parameters.nbrBooster >= 1 &&
       this.parameters.pkmnPerBooster * this.parameters.nbrBooster <= 18 &&
-      this.parameters.roomName.length > 3 && this.parameters.roomName.length < 50
+      this.parameters.roomName.length > 3 && this.parameters.roomName.length < 30
     );
   }
 }

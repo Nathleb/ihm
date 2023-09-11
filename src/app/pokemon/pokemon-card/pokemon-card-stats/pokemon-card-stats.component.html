@@ -1,5 +1,5 @@
 <app-stat-progress-bar
   *ngFor="let key of baseStats.keys()"
   [stat]="key"
-  [value]="baseStats.get(key)!"
+  [value]="calculateValue(key)"
 ></app-stat-progress-bar>

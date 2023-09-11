@@ -53,14 +53,17 @@ export class RoomComponent {
   registerEvents() {
 
     this.roomService.socket.on("joinRoom", (room: RoomDTO) => {
-      const { id, size, players, name, hasStarted } = room;
+      const { id, size, players, name, hasStarted, nbrBooster, pkmnPerBooster, boostersLeft } = room;
 
       const roomDTO: RoomDTO = {
         id: id,
         size: size,
         players: players,
         name: name,
-        hasStarted: hasStarted
+        hasStarted: hasStarted,
+        nbrBooster: nbrBooster,
+        pkmnPerBooster: pkmnPerBooster,
+        boostersLeft: boostersLeft
       };
       this.room = roomDTO;
     });
@@ -97,8 +100,12 @@ export class RoomComponent {
       size: 0,
       players: new Array(),
       name: "",
-      hasStarted: false
+      hasStarted: false,
+      nbrBooster: 1,
+      pkmnPerBooster: 6,
+      boostersLeft: 1
     };
+
 
     this.player = {
       pseudo: DEFAULT.NO_ROOM,
@@ -109,15 +116,32 @@ export class RoomComponent {
     };
   }
 
+  copyTeamToClipboard() {
+    this.player.team.filter(pkmn => {
+    });
+  }
+
   deserializePokemonSets(pokemonSets: PokemonSet[]): PokemonSet[] {
 
     return pokemonSets.map(pokemonSet => {
       return {
         ...pokemonSet,
-        baseStats: pokemonSet.baseStats ? new Map(Object.entries(pokemonSet.baseStats)) : new Map<string, number>(),
-        evs: pokemonSet.evs ? new Map(Object.entries(pokemonSet.evs)) : new Map<string, number>(),
-        ivs: pokemonSet.ivs ? new Map(Object.entries(pokemonSet.ivs)) : new Map<string, number>()
+        baseStats: pokemonSet.baseStats ? this.createEmptyStatMap(new Map(Object.entries(pokemonSet.baseStats))) : this.createEmptyStatMap(new Map<string, number>()),
+        evs: pokemonSet.evs ? this.createEmptyStatMap(new Map(Object.entries(pokemonSet.evs))) : this.createEmptyStatMap(new Map<string, number>()),
+        ivs: pokemonSet.ivs ? this.createEmptyStatMap(new Map(Object.entries(pokemonSet.ivs))) : this.createEmptyStatMap(new Map<string, number>())
       };
     });
+  }
+
+  createEmptyStatMap(fetchedMap: Map<string, number>): Map<string, number> {
+    let emptyMap: Map<string, number> = new Map<string, number>();
+    emptyMap.set('hp', fetchedMap.get('hp') || 0);
+    emptyMap.set('attack', fetchedMap.get('attack') || 0);
+    emptyMap.set('defense', fetchedMap.get('defense') || 0);
+    emptyMap.set('special-attack', fetchedMap.get('special-attack') || 0);
+    emptyMap.set('special-defense', fetchedMap.get('special-defense') || 0);
+    emptyMap.set('speed', fetchedMap.get('speed') || 0);
+
+    return emptyMap;
   }
 }

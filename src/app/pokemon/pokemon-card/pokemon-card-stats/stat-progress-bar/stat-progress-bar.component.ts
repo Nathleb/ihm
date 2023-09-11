@@ -23,12 +23,13 @@ export class StatProgressBarComponent {
   ngOnChanges(simpleChanges: SimpleChanges) {
     if (simpleChanges["value"]) {
       this.realValue = simpleChanges['value'].currentValue;
-      this.value = (simpleChanges['value'].currentValue / 180) * 100;
+      this.value = (simpleChanges['value'].currentValue / 350) * 100;
     }
     if (simpleChanges["stat"]) {
       this.stat = this.statDico[simpleChanges["stat"].currentValue];
     }
   }
+
 
   getColor(): string {
     const red = Math.round(255 * this.value / 100);

@@ -1,7 +1,7 @@
 <mat-card class="room-list-card">
   <mat-card-header class="room-list-card-header">
     <button mat-raised-button color="primary" (click)="refresh()">
-      refresh list
+      Refresh list
     </button>
   </mat-card-header>
   <ng-container *ngFor="let room of rooms">
@@ -11,7 +11,8 @@
       (click)="joinRoom(room)"
       class="joinRoom-button"
     >
-      Join {{ room.name }} {{ room.players.length }}/{{ room.size }}
+      Join {{ room.name }} ({{ room.players.length }}/{{ room.size }} 🙋) :
+      {{ room.nbrBooster }}📦 x {{ room.pkmnPerBooster }}🐾
     </button>
   </ng-container>
 </mat-card>

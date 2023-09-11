@@ -5,6 +5,14 @@
   ></app-table-sits>
 
   <div class="game-ui" *ngIf="player.sit >= 0">
+    <button
+      *ngIf="player.toChoseFrom.length == 0 && room.boostersLeft == 0"
+      mat-raised-button
+      color="accent"
+      (click)="copyTeamToClipboard()"
+    >
+      Export Team
+    </button>
     <app-pokemon-card-grid
       [pokemonSets]="player.toChoseFrom"
       [hasPicked]="player.hasPicked"

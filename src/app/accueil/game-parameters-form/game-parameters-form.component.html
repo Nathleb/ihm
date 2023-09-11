@@ -8,6 +8,7 @@
       placeholder="Cool room name"
       [(ngModel)]="parameters.roomName"
       required
+      maxlength="30"
     />
   </mat-card-header>
 
@@ -21,6 +22,8 @@
         placeholder="8"
         [(ngModel)]="parameters.size"
         required
+        min="1"
+        max="16"
       />
     </div>
     <div class="form-column">
@@ -32,6 +35,8 @@
         placeholder="1"
         [(ngModel)]="parameters.nbrBooster"
         required
+        min="1"
+        max="18"
       />
     </div>
     <div class="form-column">
@@ -44,6 +49,8 @@
         placeholder="6"
         [(ngModel)]="parameters.pkmnPerBooster"
         required
+        min="1"
+        max="18"
       />
     </div>
   </mat-card-content>
@@ -53,6 +60,6 @@
     (click)="startGame()"
     [disabled]="!formIsValid()"
   >
-    Create Room
+    Create room
   </button>
 </mat-card>

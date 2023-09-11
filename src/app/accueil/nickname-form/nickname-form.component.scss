@@ -2,7 +2,7 @@ input {
   all: unset;
 }
 
-.game-parameters-form {
+.nickname-form {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -36,42 +36,4 @@ button {
     box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset,
       rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
   }
-}
-
-mat-card-content {
-  display: flex;
-  flex-direction: row;
-  padding: 10px;
-}
-
-.form-column {
-  box-sizing: border-box;
-  width: 33%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  input {
-    text-align: center;
-    width: 25%;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
-      rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
-      rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
-  }
-  input:focus {
-    box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset,
-      rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
-  }
-}
-
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-input[type="number"] {
-  -moz-appearance: textfield;
 }
