@@ -12,6 +12,7 @@ import {
   CdkDrag,
   CdkDropList,
 } from '@angular/cdk/drag-drop';
+import { GameParameters } from './interfaces/gameParameters';
 
 @Component({
   selector: 'app-room',
@@ -24,6 +25,7 @@ export class RoomComponent {
 
   @Input() room: RoomDTO;
   player: PlayerDTO;
+  isPlayerOwner: boolean;
 
   ngOnInit() {
     this.resetRoomAndPlayer();
@@ -31,6 +33,7 @@ export class RoomComponent {
       const roomId = params.get('roomId');
       if (roomId) {
         this.roomService.joinRoom(roomId);
+        this.roomService.isPlayerOwner(roomId);
       }
     });
     this.registerEvents();
@@ -50,18 +53,24 @@ export class RoomComponent {
   registerEvents() {
 
     this.roomService.socket.on("joinRoom", (room: RoomDTO) => {
-      const { id, size, players, name } = room;
+      const { id, size, players, name, hasStarted } = room;
 
       const roomDTO: RoomDTO = {
         id: id,
         size: size,
         players: players,
-        name: name
+        name: name,
+        hasStarted: hasStarted
       };
       this.room = roomDTO;
     });
 
+    this.roomService.socket.on("updateHasPickedStatus", (players: Partial<PlayerDTO>[]) => {
+      this.room.players = players;
+    });
+
     this.roomService.socket.on("nextPick", (player: PlayerDTO) => {
+      this.room.hasStarted = true;
       this.ngZone.run(() => {
         const updatedPlayer: PlayerDTO = {
           ...player,
@@ -76,6 +85,10 @@ export class RoomComponent {
     this.roomService.socket.on("error", (error: string) => {
       this.router.navigate([""]);
     });
+
+    this.roomService.socket.on("isPlayerOwner", (isPlayerOwner: boolean) => {
+      this.isPlayerOwner = isPlayerOwner;
+    });
   }
 
   resetRoomAndPlayer() {
@@ -83,7 +96,8 @@ export class RoomComponent {
       id: DEFAULT.NO_ROOM,
       size: 0,
       players: new Array(),
-      name: ""
+      name: "",
+      hasStarted: false
     };
 
     this.player = {

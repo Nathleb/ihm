@@ -1,10 +1,8 @@
-<button mat-raised-button color="accent" (click)="createRoom()">
-  Create Room
-</button>
-<button mat-raised-button color="primary" (click)="refresh()">refresh</button>
-
-<mat-card *ngFor="let room of rooms">
-  <button (click)="joinRoom(room.id)">
-    Join {{ room.name }}'s room {{ room.players.length }}/{{ room.size }}
-  </button>
-</mat-card>
+<div class="accueil">
+  <div class="forms">
+    <app-game-parameters-form
+      (OnRoomCreation)="createRoom($event)"
+    ></app-game-parameters-form>
+  </div>
+  <app-room-list></app-room-list>
+</div>

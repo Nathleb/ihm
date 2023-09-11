@@ -1,6 +1,14 @@
 import { Component, Input } from '@angular/core';
 import { KeyWord } from 'src/app/pokemon/interfaces/keyWord';
 import { colorTable } from '../../interfaces/colors/colorTable';
+import { MAT_TOOLTIP_DEFAULT_OPTIONS, MatTooltipDefaultOptions } from '@angular/material/tooltip';
+
+export const myCustomTooltipDefaults: MatTooltipDefaultOptions = {
+  showDelay: 100,
+  hideDelay: 0,
+  touchendHideDelay: 0,
+  disableTooltipInteractivity: true,
+};
 
 
 @Component({

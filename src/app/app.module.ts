@@ -1,6 +1,8 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,15 +17,22 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 import { MatButtonModule } from '@angular/material/button';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
-import { MatGridListModule } from '@angular/material/grid-list';
+import { MatIconModule } from '@angular/material/icon';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatInputModule } from '@angular/material/input';
 import { MatBadgeModule } from '@angular/material/badge';
-import { CdkDropList, CdkDrag } from '@angular/cdk/drag-drop';
+
+import { DragDropModule, CdkDropList, CdkDrag, CdkDragPreview } from '@angular/cdk/drag-drop';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { AccueilComponent } from './accueil/accueil.component';
 import { RoomComponent } from './room/room.component';
+import { TableSitsComponent } from './room/table-sits/table-sits.component';
+import { GameParametersFormComponent } from './accueil/game-parameters-form/game-parameters-form.component';
+import { ToolbarComponent } from './toolbar/toolbar.component';
+import { RoomListComponent } from './accueil/room-list/room-list.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +46,10 @@ import { RoomComponent } from './room/room.component';
     AccueilComponent,
     RoomComponent,
     StatProgressBarComponent,
+    TableSitsComponent,
+    GameParametersFormComponent,
+    ToolbarComponent,
+    RoomListComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,13 +58,18 @@ import { RoomComponent } from './room/room.component';
     BrowserAnimationsModule,
     MatButtonModule,
     MatCardModule,
-    MatGridListModule,
     MatListModule,
     MatProgressBarModule,
     MatBadgeModule,
     MatTooltipModule,
     CdkDropList,
-    CdkDrag
+    CdkDrag,
+    CdkDragPreview,
+    DragDropModule,
+    MatInputModule,
+    FormsModule,
+    MatToolbarModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

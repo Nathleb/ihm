@@ -1,7 +1,7 @@
 <mat-card-header>
   <div>
     <mat-card-title-group>
-      <mat-card-title>{{ pokemonSet.name }}</mat-card-title>
+      <mat-card-title>{{ pokemonSet.name.split("-")[0] }}</mat-card-title>
       <mat-card-subtitle>{{ pokemonSet.role }}</mat-card-subtitle>
     </mat-card-title-group>
     <img alt="{{ pokemonSet.name }}" src="{{ pokemonSet.sprite }}" />

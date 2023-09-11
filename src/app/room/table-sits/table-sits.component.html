@@ -1,0 +1,11 @@
+<div class="player-table">
+  <div
+    *ngFor="let player of players"
+    [ngClass]="rotation ? 'player-sit-right' : 'player-sit-left'"
+    [style.border-color]="
+      player.hasPicked ? 'var(--color-primary)' : 'var(--color-warn)'
+    "
+  >
+    {{ player.pseudo }}
+  </div>
+</div>

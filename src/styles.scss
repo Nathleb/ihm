@@ -4,8 +4,9 @@
 
 $my-primary: mat-palette($mat-teal, 800);
 $my-accent: mat-palette($mat-yellow, A200, A100, A400);
+$my-warn: mat-palette($mat-red, 900);
 
-$my-theme: mat-light-theme($my-primary, $my-accent);
+$my-theme: mat-light-theme($my-primary, $my-accent, $my-warn);
 // $my-progress-bar-theme: mat-light-theme($my-progress-bar-gradient);
 
 @include angular-material-theme($my-theme);
@@ -13,4 +14,5 @@ $my-theme: mat-light-theme($my-primary, $my-accent);
 :root {
   --color-primary: #{mat-color($my-primary)};
   --color-accent: #{mat-color($my-accent)};
+  --color-warn: #{mat-color($my-warn)};
 }

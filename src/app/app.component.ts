@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ihm';
+
+  ngOnInit() {
+    if (localStorage.getItem("pkmnRndmDraftDeviceId") === null) {
+      localStorage.setItem("pkmnRndmDraftDeviceId", crypto.randomUUID());
+    }
+  }
 }

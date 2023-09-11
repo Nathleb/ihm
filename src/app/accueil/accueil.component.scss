@@ -1,0 +1,13 @@
+.accueil {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 8px;
+
+  .forms {
+    width: 48%;
+  }
+  app-room-list {
+    width: 48%;
+  }
+}

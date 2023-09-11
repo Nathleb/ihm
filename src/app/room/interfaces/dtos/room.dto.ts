@@ -5,4 +5,8 @@ export interface RoomDTO {
     size: number;
     players: Partial<PlayerDTO>[];
     name: string;
+    hasStarted: boolean;
+    nbrBooster: number;
+    pkmnPerBooster: number;
+    boostersLeft: number;
 }

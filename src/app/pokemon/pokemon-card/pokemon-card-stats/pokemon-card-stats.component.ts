@@ -12,6 +12,5 @@ export class PokemonCardStatsComponent implements OnChanges {
   @Input() baseStats: Map<string, number>;
 
   ngOnChanges(simpleChanges: SimpleChanges) {
-    console.log(this.baseStats);
   }
 }

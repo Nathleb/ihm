@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { DEFAULT } from '../pokemon/interfaces/enums/default.enum';
-import { PlayerDTO } from '../room/interfaces/dtos/player.dto';
 import { RoomDTO } from '../room/interfaces/dtos/room.dto';
+import { GameParameters } from '../room/interfaces/gameParameters';
 import { RoomService } from '../room/room.service';
 
 @Component({
   selector: 'app-accueil',
   templateUrl: './accueil.component.html',
+  styleUrls: ['./accueil.component.scss']
 })
 export class AccueilComponent {
 
@@ -19,24 +20,11 @@ export class AccueilComponent {
   rooms: RoomDTO[] = new Array();
 
   ngOnInit() {
-    this.refresh();
     this.registerEvents();
   }
 
-  createRoom() {
-    this.roomService.createRoom(4);
-  }
-
-  refresh() {
-    this.roomService.getAllRooms().subscribe(rooms => {
-      this.rooms = rooms;
-    });
-
-    this.roomService.quitRoom();
-  }
-
-  joinRoom(roomId: string) {
-    this.router.navigate(['room', roomId]);
+  createRoom(gameParameters: GameParameters) {
+    this.roomService.createRoom(gameParameters);
   }
 
   registerEvents() {

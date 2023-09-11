@@ -1,0 +1,58 @@
+<mat-card class="game-parameters-form">
+  <mat-card-header class="form-field-text">
+    <input
+      id="roomName"
+      class="form-control"
+      type="text"
+      matInput
+      placeholder="Cool room name"
+      [(ngModel)]="parameters.roomName"
+      required
+    />
+  </mat-card-header>
+
+  <mat-card-content>
+    <div class="form-column">
+      <label for="NmbrOfPlayers">Total players</label>
+      <input
+        id="NmbrOfPlayers"
+        class="form-control form-field-number"
+        type="number"
+        placeholder="8"
+        [(ngModel)]="parameters.size"
+        required
+      />
+    </div>
+    <div class="form-column">
+      <label for="NmbrOfPacks">Total packs</label>
+      <input
+        id="NmbrOfPacks"
+        class="form-control form-field-number"
+        type="number"
+        placeholder="1"
+        [(ngModel)]="parameters.nbrBooster"
+        required
+      />
+    </div>
+    <div class="form-column">
+      <label for="PkmnPerBooster">Pack size</label>
+      <input
+        id="PkmnPerBooster"
+        #pkmnPerBoosterInput="ngModel"
+        class="form-control form-field-number"
+        type="number"
+        placeholder="6"
+        [(ngModel)]="parameters.pkmnPerBooster"
+        required
+      />
+    </div>
+  </mat-card-content>
+  <button
+    mat-raised-button
+    color="accent"
+    (click)="startGame()"
+    [disabled]="!formIsValid()"
+  >
+    Create Room
+  </button>
+</mat-card>

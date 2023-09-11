@@ -1,11 +1,22 @@
 import { Component, Input } from '@angular/core';
 import { Move } from 'src/app/pokemon/interfaces/move';
 import { colorTable } from '../../interfaces/colors/colorTable';
+import { MAT_TOOLTIP_DEFAULT_OPTIONS, MatTooltipDefaultOptions } from '@angular/material/tooltip';
+
+export const myCustomTooltipDefaults: MatTooltipDefaultOptions = {
+  showDelay: 100,
+  hideDelay: 0,
+  touchendHideDelay: 0,
+  disableTooltipInteractivity: true,
+};
 
 @Component({
   selector: 'app-pokemon-card-moves',
   templateUrl: './pokemon-card-moves.component.html',
-  styleUrls: ['pokemon-card-moves.component.scss']
+  styleUrls: ['pokemon-card-moves.component.scss'],
+  providers: [
+    { provide: MAT_TOOLTIP_DEFAULT_OPTIONS, useValue: myCustomTooltipDefaults }
+  ],
 })
 
 export class PokemonCardMovesComponent {

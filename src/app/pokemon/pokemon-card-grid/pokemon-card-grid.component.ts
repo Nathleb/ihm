@@ -10,6 +10,7 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
   styleUrls: ['./pokemon-card-grid.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
+
 export class PokemonCardGridComponent {
 
   Breakpoint = Breakpoints;
@@ -22,13 +23,18 @@ export class PokemonCardGridComponent {
   @Input() pokemonSets: Array<PokemonSet> = new Array<PokemonSet>();
   @Input() hasPicked: boolean = true;
   @Output() picked: EventEmitter<string> = new EventEmitter<string>();
+  selected: string;
 
   pick(name: string) {
-    this.picked.emit(name);
+    if (name === this.selected && !this.hasPicked) {
+      this.picked.emit(name);
+    }
+    else {
+      this.selected = name;
+    }
   }
 
   drop(event: CdkDragDrop<PokemonSet[]>) {
     console.log(event);
-    moveItemInArray(this.pokemonSets, event.previousIndex, event.currentIndex);
   }
 }

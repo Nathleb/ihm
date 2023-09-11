@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { io, Socket } from 'socket.io-client';
 import { RoomDTO } from './interfaces/dtos/room.dto';
+import { GameParameters } from './interfaces/gameParameters';
 
 @Injectable({
     providedIn: 'root'
@@ -12,7 +13,11 @@ export class RoomService {
     private readonly baseUrl = 'http://localhost:3000';
 
     constructor(private http: HttpClient) {
-        this.socket = io(this.baseUrl);
+        this.socket = io(this.baseUrl, {
+            query: {
+                deviceIdentifier: localStorage.getItem('pkmnRndmDraftDeviceId'),
+            },
+        });
     }
 
     getAllRooms(): Observable<RoomDTO[]> {
@@ -20,8 +25,8 @@ export class RoomService {
         return this.http.get<RoomDTO[]>(url);
     }
 
-    createRoom(size: number) {
-        this.socket.emit('createRoom', JSON.stringify({ size }));
+    createRoom(gameParameters: GameParameters) {
+        this.socket.emit('createRoom', JSON.stringify({ ...gameParameters }));
     }
 
     joinRoom(roomId: string) {
@@ -34,6 +39,10 @@ export class RoomService {
 
     nextPick(roomId: string, pickedPokemonName: string) {
         this.socket.emit('nextPick', JSON.stringify({ roomId, pickedPokemonName }));
+    }
+
+    isPlayerOwner(roomId: string) {
+        this.socket.emit('isPlayerOwner', JSON.stringify({ roomId }));
     }
 
     quitRoom() {

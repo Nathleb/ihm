@@ -1,5 +1,6 @@
 export interface GameParameters {
-    roomId: string,
+    size: number,
     nbrBooster: number,
     pkmnPerBooster: number,
+    roomName: string;
 }

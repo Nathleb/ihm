@@ -1,4 +1,8 @@
-<div class="progress-bar" [matTooltip]="realValue.toString()">
+<div
+  class="progress-bar"
+  [matTooltip]="realValue.toString()"
+  matTooltipPosition="right"
+>
   <span>{{ stat }} : </span
   ><mat-progress-bar
     mode="determinate"
