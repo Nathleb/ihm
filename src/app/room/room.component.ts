@@ -6,6 +6,7 @@ import { PlayerDTO } from './interfaces/dtos/player.dto';
 import { RoomDTO } from './interfaces/dtos/room.dto';
 import { RoomService } from './room.service';
 import { Clipboard } from '@angular/cdk/clipboard';
+import { PokemonCardComponent } from '../pokemon/pokemon-card/pokemon-card.component';
 
 
 @Component({
@@ -135,10 +136,22 @@ export class RoomComponent {
   }
 
   copyTeamToClipboard() {
-    this.finalTeam.filter(pkmn => {
-      console.log(pkmn);
+    let exportString = "";
+
+    this.finalTeam.forEach(pkmn => {
+      exportString += `${pkmn.name} @ ${pkmn.item.name}
+Ability: ${pkmn.ability.name}
+Level: 50
+Tera Type: ${pkmn.teraType}
+EVs: ${pkmn.evs.get('hp')} HP / ${pkmn.evs.get('attack')} Atk / ${pkmn.evs.get('defense')} Def / ${pkmn.evs.get('special-attack')} SpA / ${pkmn.evs.get('special-defense')} SpD / ${pkmn.evs.get('speed')} Spe
+Hardy Nature
+IVs: ${pkmn.ivs.get('hp')} HP / ${pkmn.ivs.get('attack')} Atk / ${pkmn.ivs.get('defense')} Def / ${pkmn.ivs.get('special-attack')} SpA / ${pkmn.ivs.get('special-defense')} SpD / ${pkmn.ivs.get('speed')} Spe
+- ${pkmn.moves[0]?.name}
+- ${pkmn.moves[1]?.name}
+- ${pkmn.moves[2]?.name}
+- ${pkmn.moves[3]?.name}\n\n`;
     });
-    this.clipboard.copy(" ds");
+    this.clipboard.copy(exportString);
   }
 
   CopyLinkToClipboard() {
@@ -150,21 +163,21 @@ export class RoomComponent {
     return pokemonSets.map(pokemonSet => {
       return {
         ...pokemonSet,
-        baseStats: pokemonSet.baseStats ? this.createEmptyStatMap(new Map(Object.entries(pokemonSet.baseStats))) : this.createEmptyStatMap(new Map<string, number>()),
-        evs: pokemonSet.evs ? this.createEmptyStatMap(new Map(Object.entries(pokemonSet.evs))) : this.createEmptyStatMap(new Map<string, number>()),
-        ivs: pokemonSet.ivs ? this.createEmptyStatMap(new Map(Object.entries(pokemonSet.ivs))) : this.createEmptyStatMap(new Map<string, number>())
+        baseStats: pokemonSet.baseStats ? this.createEmptyStatMap(new Map(Object.entries(pokemonSet.baseStats)), 0) : this.createEmptyStatMap(new Map<string, number>(), 0),
+        evs: pokemonSet.evs ? this.createEmptyStatMap(new Map(Object.entries(pokemonSet.evs)), 85) : this.createEmptyStatMap(new Map<string, number>(), 85),
+        ivs: pokemonSet.ivs ? this.createEmptyStatMap(new Map(Object.entries(pokemonSet.ivs)), 0) : this.createEmptyStatMap(new Map<string, number>(), 0)
       };
     });
   }
 
-  createEmptyStatMap(fetchedMap: Map<string, number>): Map<string, number> {
+  createEmptyStatMap(fetchedMap: Map<string, number>, defaultValue: number): Map<string, number> {
     let emptyMap: Map<string, number> = new Map<string, number>();
-    emptyMap.set('hp', fetchedMap.get('hp') || 0);
-    emptyMap.set('attack', fetchedMap.get('attack') || 0);
-    emptyMap.set('defense', fetchedMap.get('defense') || 0);
-    emptyMap.set('special-attack', fetchedMap.get('special-attack') || 0);
-    emptyMap.set('special-defense', fetchedMap.get('special-defense') || 0);
-    emptyMap.set('speed', fetchedMap.get('speed') || 0);
+    emptyMap.set('hp', fetchedMap.get('hp') || defaultValue);
+    emptyMap.set('attack', fetchedMap.get('attack') || defaultValue);
+    emptyMap.set('defense', fetchedMap.get('defense') || defaultValue);
+    emptyMap.set('special-attack', fetchedMap.get('special-attack') || defaultValue);
+    emptyMap.set('special-defense', fetchedMap.get('special-defense') || defaultValue);
+    emptyMap.set('speed', fetchedMap.get('speed') || defaultValue);
 
     return emptyMap;
   }
