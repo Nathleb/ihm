@@ -16,6 +16,7 @@ export class AccueilComponent {
   }
 
   DEFAULT = DEFAULT;
+  pseudo: string;
 
   rooms: RoomDTO[] = new Array();
 
@@ -31,5 +32,12 @@ export class AccueilComponent {
     this.roomService.socket.on("createRoom", (roomId: string) => {
       this.router.navigate(['room', roomId]);
     });
+
+
+    this.roomService.socket.on("firstConnection", payload => {
+      const { pseudo, inRoomId } = payload;
+      this.pseudo = pseudo;
+    });
+
   }
 }

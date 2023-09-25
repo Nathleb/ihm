@@ -12,7 +12,7 @@
     />
   </mat-card-header>
 
-  <mat-card-content>
+  <mat-card-content class="form-middle-part">
     <div class="form-column">
       <label for="NmbrOfPlayers">Total players</label>
       <input
@@ -55,8 +55,8 @@
     </div>
   </mat-card-content>
   <button
-    mat-raised-button
-    color="accent"
+    mat-flat-button
+    color="primary"
     (click)="startGame()"
     [disabled]="!formIsValid()"
   >

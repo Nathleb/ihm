@@ -5,14 +5,8 @@ import { PokemonSet } from '../pokemon/interfaces/pokemonSet';
 import { PlayerDTO } from './interfaces/dtos/player.dto';
 import { RoomDTO } from './interfaces/dtos/room.dto';
 import { RoomService } from './room.service';
-import {
-  CdkDragDrop,
-  moveItemInArray,
-  transferArrayItem,
-  CdkDrag,
-  CdkDropList,
-} from '@angular/cdk/drag-drop';
-import { GameParameters } from './interfaces/gameParameters';
+import { Clipboard } from '@angular/cdk/clipboard';
+
 
 @Component({
   selector: 'app-room',
@@ -20,11 +14,12 @@ import { GameParameters } from './interfaces/gameParameters';
   styleUrls: ['./room.component.scss']
 })
 export class RoomComponent {
-  constructor(private roomService: RoomService, private router: Router, private route: ActivatedRoute, private ngZone: NgZone) {
+  constructor(private roomService: RoomService, public router: Router, private route: ActivatedRoute, private ngZone: NgZone, private clipboard: Clipboard) {
   }
 
   @Input() room: RoomDTO;
   player: PlayerDTO;
+  finalTeam: Array<PokemonSet> = new Array<PokemonSet>();
   isPlayerOwner: boolean;
 
   ngOnInit() {
@@ -45,10 +40,9 @@ export class RoomComponent {
 
   nextPick(roomId: string, name: string) {
     this.roomService.nextPick(roomId, name);
-    const index = this.player.toChoseFrom.findIndex(pokemonSet => pokemonSet.name == name);
-    this.player.team.push(this.player.toChoseFrom[index]);
-    this.player.toChoseFrom.splice(index, 1);
   }
+
+
 
   registerEvents() {
 
@@ -116,9 +110,39 @@ export class RoomComponent {
     };
   }
 
+  addOrRemoveFromTeam(newSet: PokemonSet) {
+    const finalTeamCpy = [...this.finalTeam];
+    const teamCpy = [...this.player.team];
+
+    if (this.isDraftOver()) {
+      const index = this.finalTeam.findIndex((set) => set.name === newSet.name && set.role === newSet.role);
+      const indexTeam = this.player.team.findIndex((set) => set.name === newSet.name && set.role === newSet.role);
+
+      if (index !== -1) {
+        finalTeamCpy.splice(index, 1);
+        teamCpy.push(newSet);
+      } else if (this.finalTeam.length < 6) {
+        teamCpy.splice(indexTeam, 1);
+        finalTeamCpy.push(newSet);
+      }
+      this.finalTeam = finalTeamCpy;
+      this.player.team = teamCpy;
+    }
+  }
+
+  isDraftOver(): boolean {
+    return this.player.team.length + this.finalTeam.length === this.room.nbrBooster * this.room.pkmnPerBooster;
+  }
+
   copyTeamToClipboard() {
-    this.player.team.filter(pkmn => {
+    this.finalTeam.filter(pkmn => {
+      console.log(pkmn);
     });
+    this.clipboard.copy(" ds");
+  }
+
+  CopyLinkToClipboard() {
+    this.clipboard.copy('http://localhost:4200' + this.router.url);
   }
 
   deserializePokemonSets(pokemonSets: PokemonSet[]): PokemonSet[] {

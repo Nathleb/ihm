@@ -2,7 +2,7 @@
   <mat-card
     class="mat-card-pokemon"
     *ngFor="let set of pokemonSets"
-    (click)="pick(set.name)"
+    (click)="pick(set)"
     [ngClass]="{ selected: set.name === selected && !hasPicked }"
   >
     <app-pokemon-card [pokemonSet]="set"> </app-pokemon-card>

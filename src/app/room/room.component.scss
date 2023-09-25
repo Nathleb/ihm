@@ -6,8 +6,25 @@
 }
 .game-ui {
   width: 90%;
+  h1 {
+    margin-top: 3vh;
+  }
+  app-pokemon-card-grid {
+    min-height: 40%;
+  }
 }
 
 app-table-sits {
-  padding-top: 8px;
+  margin-top: 3vh;
+}
+
+button {
+  margin-right: 5px;
+}
+
+.button-row {
+  button {
+    margin-right: 5px;
+    margin-top: 3vh;
+  }
 }

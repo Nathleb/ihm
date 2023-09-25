@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { RoomService } from './room/room.service';
 
 @Component({
   selector: 'app-root',

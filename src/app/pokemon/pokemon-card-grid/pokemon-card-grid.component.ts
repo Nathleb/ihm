@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, SimpleChanges } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { PokemonSet } from '../interfaces/pokemonSet';
 import { PokemonService } from '../pokemon.service';
@@ -23,18 +23,20 @@ export class PokemonCardGridComponent {
   @Input() pokemonSets: Array<PokemonSet> = new Array<PokemonSet>();
   @Input() hasPicked: boolean = true;
   @Output() picked: EventEmitter<string> = new EventEmitter<string>();
+  @Output() addOrRemoveFromTeam: EventEmitter<PokemonSet> = new EventEmitter<PokemonSet>();
   selected: string;
 
-  pick(name: string) {
-    if (name === this.selected && !this.hasPicked) {
-      this.picked.emit(name);
+
+
+  pick(set: PokemonSet) {
+
+    if (set.name === this.selected && !this.hasPicked) {
+      this.selected = '';
+      this.picked.emit(set.name);
     }
     else {
-      this.selected = name;
+      this.selected = set.name;
+      this.addOrRemoveFromTeam.emit(set);
     }
-  }
-
-  drop(event: CdkDragDrop<PokemonSet[]>) {
-    console.log(event);
   }
 }

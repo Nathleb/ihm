@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, SimpleChanges } from '@angular/core';
 import { RoomService } from 'src/app/room/room.service';
 
 @Component({
@@ -13,7 +13,7 @@ export class NicknameFormComponent {
 
   }
 
-  nickname: string = '';
+  @Input() nickname: string = '';
 
   updateNickname() {
     if (this.formIsValid()) {
@@ -22,9 +22,9 @@ export class NicknameFormComponent {
   }
 
   formIsValid(): boolean {
-
-    return this.nickname.length > 2 &&
+    return this.nickname !== undefined && this.nickname.length > 2 &&
       this.nickname.length < 30 &&
-      new RegExp(/^[a-z0-9]+$/).test(this.nickname);
+      new RegExp(/^[a-zA-Z0-9\-]+$/).test(this.nickname);
   }
+
 }

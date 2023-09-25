@@ -3,34 +3,62 @@
     [players]="room.players"
     [rotation]="room.boostersLeft % 2 == 0"
   ></app-table-sits>
-
-  <div class="game-ui" *ngIf="player.sit >= 0">
+  <div class="button-row">
     <button
-      *ngIf="player.toChoseFrom.length == 0 && room.boostersLeft == 0"
+      *ngIf="isDraftOver()"
+      mat-raised-button
+      color="primary"
+      (click)="copyTeamToClipboard()"
+      [disabled]="
+        finalTeam.length != 6 &&
+        finalTeam.length != room.nbrBooster * room.pkmnPerBooster
+      "
+    >
+      Export Team<mat-icon>content_copy</mat-icon>
+    </button>
+    <button
+      *ngIf="!room.hasStarted && isPlayerOwner"
+      mat-raised-button
+      color="primary"
+      (click)="startGame(room.id)"
+    >
+      Launch <mat-icon>cached</mat-icon>
+    </button>
+    <button
+      *ngIf="!room.hasStarted"
       mat-raised-button
       color="accent"
-      (click)="copyTeamToClipboard()"
+      (click)="CopyLinkToClipboard()"
+      title="Copy room link for sharing"
     >
-      Export Team
+      Copy room link <mat-icon>link</mat-icon>
     </button>
+  </div>
+  <div class="game-ui" *ngIf="room.hasStarted">
+    <h1 *ngIf="!isDraftOver()">
+      📦 Pack ({{ room.nbrBooster - room.boostersLeft + 1 }}/{{
+        room.nbrBooster
+      }}) :
+    </h1>
     <app-pokemon-card-grid
+      *ngIf="!isDraftOver()"
       [pokemonSets]="player.toChoseFrom"
       [hasPicked]="player.hasPicked"
       (picked)="nextPick(room.id, $event)"
     >
     </app-pokemon-card-grid>
 
+    <h1 *ngIf="isDraftOver()">🔥 The final team :</h1>
+    <app-pokemon-card-grid
+      *ngIf="isDraftOver()"
+      [pokemonSets]="finalTeam"
+      (addOrRemoveFromTeam)="addOrRemoveFromTeam($event)"
+    ></app-pokemon-card-grid>
+
+    <h1>🐾 Pokemons picked :</h1>
     <app-pokemon-card-grid
       [pokemonSets]="player.team"
-      (picked)="nextPick(room.id, $event)"
+      (addOrRemoveFromTeam)="addOrRemoveFromTeam($event)"
     ></app-pokemon-card-grid>
-    <button
-      *ngIf="!room.hasStarted && isPlayerOwner"
-      mat-raised-button
-      color="accent"
-      (click)="startGame(room.id)"
-    >
-      Launch
-    </button>
   </div>
 </div>

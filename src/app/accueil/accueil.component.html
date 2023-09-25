@@ -1,9 +1,11 @@
-<div class="accueil">
-  <div class="forms">
-    <app-game-parameters-form
-      (OnRoomCreation)="createRoom($event)"
-    ></app-game-parameters-form>
-    <app-nickname-form></app-nickname-form>
+<div class="container">
+  <div class="accueil">
+    <div class="forms">
+      <app-game-parameters-form
+        (OnRoomCreation)="createRoom($event)"
+      ></app-game-parameters-form>
+      <app-nickname-form [nickname]="pseudo"></app-nickname-form>
+    </div>
+    <app-room-list></app-room-list>
   </div>
-  <app-room-list></app-room-list>
 </div>

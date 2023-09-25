@@ -3,15 +3,29 @@
   flex-direction: row;
   justify-content: space-between;
   padding: 8px;
+  margin-top: 3vh;
+  max-width: 1500px;
+  width: 100%;
 
   .forms {
-    width: 48%;
+    min-width: 105px;
+    max-width: 300px;
+    width: 24%;
+    padding-right: 8px;
   }
   app-room-list {
-    width: 48%;
+    min-width: min(74%, calc(98% - 105px));
+    width: max(74%, calc(98% - 105px));
   }
 
   app-nickname-form {
     padding: 8px;
   }
+}
+
+.container {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
 }
