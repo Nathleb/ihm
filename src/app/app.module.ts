@@ -7,7 +7,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PokemonCardComponent } from './pokemon/pokemon-card/pokemon-card.component';
 import { PokemonCardGridComponent } from './pokemon/pokemon-card-grid/pokemon-card-grid.component';
-import { PokemonCardTypesComponent } from './pokemon/pokemon-card/pokemon-card-types/pokemon-card-types.component';
 import { PokemonCardMovesComponent } from './pokemon/pokemon-card/pokemon-card-moves/pokemon-card-moves.component';
 import { PokemonCardKeywordsComponent } from './pokemon/pokemon-card/pokemon-card-keywords/pokemon-card-keywords.component';
 import { PokemonCardStatsComponent } from './pokemon/pokemon-card/pokemon-card-stats/pokemon-card-stats.component';
@@ -23,6 +22,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatInputModule } from '@angular/material/input';
 import { MatBadgeModule } from '@angular/material/badge';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 import { DragDropModule, CdkDropList, CdkDrag, CdkDragPreview } from '@angular/cdk/drag-drop';
 import { MatTooltipModule } from '@angular/material/tooltip';
@@ -39,7 +39,6 @@ import { NicknameFormComponent } from './accueil/nickname-form/nickname-form.com
     AppComponent,
     PokemonCardComponent,
     PokemonCardGridComponent,
-    PokemonCardTypesComponent,
     PokemonCardMovesComponent,
     PokemonCardKeywordsComponent,
     PokemonCardStatsComponent,
@@ -70,7 +69,8 @@ import { NicknameFormComponent } from './accueil/nickname-form/nickname-form.com
     MatInputModule,
     FormsModule,
     MatToolbarModule,
-    MatIconModule
+    MatIconModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

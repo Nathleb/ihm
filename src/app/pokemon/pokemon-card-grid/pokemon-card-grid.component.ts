@@ -1,8 +1,6 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, SimpleChanges } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { PokemonSet } from '../interfaces/pokemonSet';
-import { PokemonService } from '../pokemon.service';
-import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-pokemon-card-grid',
@@ -26,10 +24,7 @@ export class PokemonCardGridComponent {
   @Output() addOrRemoveFromTeam: EventEmitter<PokemonSet> = new EventEmitter<PokemonSet>();
   selected: string;
 
-
-
   pick(set: PokemonSet) {
-
     if (set.name === this.selected && !this.hasPicked) {
       this.selected = '';
       this.picked.emit(set.name);

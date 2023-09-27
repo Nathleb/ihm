@@ -13,7 +13,7 @@ export class NicknameFormComponent {
 
   }
 
-  @Input() nickname: string = '';
+  @Input() nickname: string;
 
   updateNickname() {
     if (this.formIsValid()) {
@@ -24,7 +24,7 @@ export class NicknameFormComponent {
   formIsValid(): boolean {
     return this.nickname !== undefined && this.nickname.length > 2 &&
       this.nickname.length < 30 &&
-      new RegExp(/^[a-zA-Z0-9\-]+$/).test(this.nickname);
+      new RegExp(/^[a-zA-Z0-9\- ]+$/).test(this.nickname);
   }
 
 }

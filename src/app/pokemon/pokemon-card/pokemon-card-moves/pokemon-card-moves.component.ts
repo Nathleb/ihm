@@ -32,12 +32,14 @@ export class PokemonCardMovesComponent {
     if (move.damage > 0) {
       tooltip += `Power: ${move.damage}   `;
     }
-    if (move.accuracy > 0) {
+    if (move.accuracy != true && move.accuracy > 0) {
       tooltip += `Accuracy: ${move.accuracy}`;
     }
     if (tooltip.length > 0) {
       tooltip += "\n";
     }
-    return tooltip += move.description;
+
+    tooltip += `Category: ${move.category}\n${move.description}`;
+    return tooltip;
   }
 }

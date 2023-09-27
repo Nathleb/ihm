@@ -3,6 +3,7 @@
     class="attack-capsule"
     *ngFor="let move of moves"
     [matTooltip]="getTooltip(move)"
+    matTooltipClass="myTooltip"
     [style.border-color]="getColor(move.type)"
   >
     {{ move.name }}

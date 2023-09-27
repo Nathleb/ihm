@@ -1,21 +1,37 @@
-<mat-card class="room-list-card">
-  <ng-container *ngFor="let room of rooms">
-    <button
-      *ngIf="!room.hasStarted"
-      mat-stroked-button
-      (click)="joinRoom(room)"
-      class="joinRoom-button"
+<mat-card class="filter-form">
+  <mat-card-header class="form-field-text">
+    <input
+      type="text"
+      [(ngModel)]="filterValue"
+      (keyup)="applyFilter()"
+      placeholder="Search 🔎"
+      maxlength="30"
+    />
+  </mat-card-header>
+  <mat-card class="room-list-card">
+    <ng-container
+      *ngFor="
+        let room of filteredRooms
+          | slice : pageIndex * pageSize : (pageIndex + 1) * pageSize
+      "
     >
-      <span class="wrap-text">Join {{ room.name }}</span
-      >{{ " " }}
-      <span class="wrap-text"
-        >({{ room.players.length }}/{{ room.size }} 🙋):</span
-      >{{ " " }}
-      <span class="wrap-text"
-        >{{ room.nbrBooster }}📦 x {{ room.pkmnPerBooster }}🐾</span
+      <button
+        *ngIf="!room.hasStarted"
+        mat-stroked-button
+        (click)="joinRoom(room)"
+        class="joinRoom-button"
       >
-    </button>
-  </ng-container>
+        <span class="wrap-text">Join {{ room.name }}</span
+        >{{ " " }}
+        <span class="wrap-text"
+          >({{ room.players.length }}/{{ room.size }} 🙋):</span
+        >{{ " " }}
+        <span class="wrap-text"
+          >{{ room.nbrBooster }}📦 x {{ room.pkmnPerBooster }}🐾</span
+        >
+      </button>
+    </ng-container>
+  </mat-card>
   <button
     mat-flat-button
     color="primary"
@@ -25,3 +41,9 @@
     Refresh list
   </button>
 </mat-card>
+
+<mat-paginator
+  [length]="filteredRooms.length"
+  [pageSize]="pageSize"
+  (page)="pageEvent($event)"
+></mat-paginator>

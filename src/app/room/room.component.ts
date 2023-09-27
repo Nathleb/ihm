@@ -6,8 +6,6 @@ import { PlayerDTO } from './interfaces/dtos/player.dto';
 import { RoomDTO } from './interfaces/dtos/room.dto';
 import { RoomService } from './room.service';
 import { Clipboard } from '@angular/cdk/clipboard';
-import { PokemonCardComponent } from '../pokemon/pokemon-card/pokemon-card.component';
-
 
 @Component({
   selector: 'app-room',

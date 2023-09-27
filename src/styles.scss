@@ -16,3 +16,17 @@ $my-theme: mat-light-theme($my-primary, $my-accent, $my-warn);
   --color-accent: #{mat-color($my-accent)};
   --color-warn: #{mat-color($my-warn)};
 }
+
+.myTooltip {
+  .mdc-tooltip__surface {
+    text-align: left;
+    white-space: pre-line;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+      rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+      rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  }
+}
+
+.mat-mdc-paginator-range-label {
+  margin: 0 !important;
+}

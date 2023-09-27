@@ -2,7 +2,6 @@
   <mat-card-header class="form-field-text">
     <input
       id="roomName"
-      class="form-control"
       type="text"
       matInput
       placeholder="Cool room name"
@@ -17,7 +16,6 @@
       <label for="NmbrOfPlayers">Total players</label>
       <input
         id="NmbrOfPlayers"
-        class="form-control form-field-number"
         type="number"
         placeholder="8"
         [(ngModel)]="parameters.size"
@@ -30,7 +28,6 @@
       <label for="NmbrOfPacks">Total packs</label>
       <input
         id="NmbrOfPacks"
-        class="form-control form-field-number"
         type="number"
         placeholder="1"
         [(ngModel)]="parameters.nbrBooster"
@@ -43,8 +40,6 @@
       <label for="PkmnPerBooster">Pack size</label>
       <input
         id="PkmnPerBooster"
-        #pkmnPerBoosterInput="ngModel"
-        class="form-control form-field-number"
         type="number"
         placeholder="6"
         [(ngModel)]="parameters.pkmnPerBooster"

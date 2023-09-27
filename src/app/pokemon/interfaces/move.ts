@@ -3,6 +3,7 @@ export interface Move {
     description: string;
     pp: number;
     damage: number;
-    accuracy: number;
+    accuracy: number | boolean;
     type: string;
+    category: string;
 }

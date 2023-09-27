@@ -21,6 +21,7 @@
       mat-raised-button
       color="primary"
       (click)="startGame(room.id)"
+      [disabled]="room.players.length < 2"
     >
       Launch <mat-icon>cached</mat-icon>
     </button>
