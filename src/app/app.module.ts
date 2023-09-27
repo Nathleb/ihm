@@ -23,6 +23,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatInputModule } from '@angular/material/input';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { DragDropModule, CdkDropList, CdkDrag, CdkDragPreview } from '@angular/cdk/drag-drop';
 import { MatTooltipModule } from '@angular/material/tooltip';
@@ -33,6 +34,7 @@ import { GameParametersFormComponent } from './accueil/game-parameters-form/game
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { RoomListComponent } from './accueil/room-list/room-list.component';
 import { NicknameFormComponent } from './accueil/nickname-form/nickname-form.component';
+import { ReconnectModalComponent } from './accueil/reconnect-modal/reconnect-modal.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +52,7 @@ import { NicknameFormComponent } from './accueil/nickname-form/nickname-form.com
     ToolbarComponent,
     RoomListComponent,
     NicknameFormComponent,
+    ReconnectModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -70,7 +73,8 @@ import { NicknameFormComponent } from './accueil/nickname-form/nickname-form.com
     FormsModule,
     MatToolbarModule,
     MatIconModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

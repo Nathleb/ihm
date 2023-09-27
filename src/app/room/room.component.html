@@ -37,9 +37,8 @@
   </div>
   <div class="game-ui" *ngIf="room.hasStarted">
     <h1 *ngIf="!isDraftOver()">
-      📦 Pack ({{ room.nbrBooster - room.boostersLeft + 1 }}/{{
-        room.nbrBooster
-      }}) :
+      📦 Pack ({{ room.nbrBooster - room.boostersLeft }}/{{ room.nbrBooster }})
+      :
     </h1>
     <app-pokemon-card-grid
       *ngIf="!isDraftOver()"

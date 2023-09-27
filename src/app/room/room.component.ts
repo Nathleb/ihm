@@ -30,7 +30,11 @@ export class RoomComponent {
         this.roomService.isPlayerOwner(roomId);
       }
     });
-    this.registerEvents();
+    this.subscribeEvents();
+  }
+
+  ngOnDestroy() {
+    this.unsubscribeEvents();
   }
 
   startGame(roomId: string) {
@@ -43,7 +47,7 @@ export class RoomComponent {
 
 
 
-  registerEvents() {
+  subscribeEvents() {
 
     this.roomService.socket.on("joinRoom", (room: RoomDTO) => {
       const { id, size, players, name, hasStarted, nbrBooster, pkmnPerBooster, boostersLeft } = room;
@@ -56,13 +60,14 @@ export class RoomComponent {
         hasStarted: hasStarted,
         nbrBooster: nbrBooster,
         pkmnPerBooster: pkmnPerBooster,
-        boostersLeft: boostersLeft
+        boostersLeft: boostersLeft - 1
       };
       this.room = roomDTO;
     });
 
-    this.roomService.socket.on("updateHasPickedStatus", (players: Partial<PlayerDTO>[]) => {
-      this.room.players = players;
+    this.roomService.socket.on("updateHasPickedStatus", (payload: { players: Partial<PlayerDTO>[], boostersLeft: number; }) => {
+      this.room.players = payload.players;
+      this.room.boostersLeft = payload.boostersLeft;
     });
 
     this.roomService.socket.on("nextPick", (player: PlayerDTO) => {
@@ -85,6 +90,14 @@ export class RoomComponent {
     this.roomService.socket.on("isPlayerOwner", (isPlayerOwner: boolean) => {
       this.isPlayerOwner = isPlayerOwner;
     });
+  }
+
+  unsubscribeEvents() {
+    this.roomService.socket.off("joinRoom");
+    this.roomService.socket.off("updateHasPickedStatus");
+    this.roomService.socket.off("nextPick");
+    this.roomService.socket.off("error");
+    this.roomService.socket.off("isPlayerOwner");
   }
 
   resetRoomAndPlayer() {

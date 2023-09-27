@@ -30,8 +30,6 @@ export class RoomListComponent {
       this.rooms = rooms;
       this.applyFilter();
     });
-
-    this.roomService.quitRoom();
   }
 
   joinRoom(room: RoomDTO) {
@@ -41,11 +39,8 @@ export class RoomListComponent {
   }
 
   applyFilter() {
-    console.log(this.filterValue);
-
     if (this.filterValue !== '') {
       this.filteredRooms = this.rooms.filter(room => room.name.includes(this.filterValue));
-      console.log(this.filteredRooms);
     }
     else {
       this.filteredRooms = this.rooms;

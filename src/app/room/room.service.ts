@@ -25,6 +25,8 @@ export class RoomService {
         return this.http.get<RoomDTO[]>(url);
     }
 
+
+
     createRoom(gameParameters: GameParameters) {
         this.socket.emit('createRoom', JSON.stringify({ ...gameParameters }));
     }
@@ -51,5 +53,9 @@ export class RoomService {
 
     quitRoom() {
         this.socket.emit('quitRoom');
+    }
+
+    getSessionInfos() {
+        this.socket.emit('getSessionInfos');
     }
 }

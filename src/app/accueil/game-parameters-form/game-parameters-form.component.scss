@@ -13,6 +13,7 @@ input {
 .form-middle-part {
   display: flex;
   flex-direction: row;
+  justify-content: space-evenly;
 }
 
 @media (max-width: 1313px) {

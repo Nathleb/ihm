@@ -1,0 +1,19 @@
+<h1 mat-dialog-title>You are currently in a room</h1>
+<mat-dialog-actions>
+  <button
+    mat-raised-button
+    color="primary"
+    mat-dialog-close
+    (click)="redirectToRoom()"
+  >
+    Reconnect
+  </button>
+  <button
+    mat-raised-button
+    color="accent"
+    mat-dialog-close
+    (click)="quitRoom()"
+  >
+    Quit room
+  </button>
+</mat-dialog-actions>
