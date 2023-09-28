@@ -34,6 +34,15 @@
     >
       Copy room link <mat-icon>link</mat-icon>
     </button>
+    <button
+      *ngIf="isDraftOver()"
+      mat-raised-button
+      color="accent"
+      (click)="openShowdown()"
+      title="open Pokemon Showdown"
+    >
+      Go to Showdown <mat-icon>link</mat-icon>
+    </button>
   </div>
   <div class="game-ui" *ngIf="room.hasStarted">
     <h1 *ngIf="!isDraftOver()">

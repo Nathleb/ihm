@@ -172,7 +172,9 @@ IVs: ${pkmn.ivs.get('hp')} HP / ${pkmn.ivs.get('attack')} Atk / ${pkmn.ivs.get('
   }
 
   CopyLinkToClipboard() {
-    this.clipboard.copy('http://localhost:4200' + this.router.url);
+    this.clipboard.copy('https://pokemon-randraft-ihm.web.app' + this.router.url);
+
+    // this.clipboard.copy('http://localhost:4200' + this.router.url);
     this.snackBar.open('Link copied to clipboard', 'Good!', {
       duration: 1500,
       horizontalPosition: 'center',
@@ -187,7 +189,7 @@ IVs: ${pkmn.ivs.get('hp')} HP / ${pkmn.ivs.get('attack')} Atk / ${pkmn.ivs.get('
         ...pokemonSet,
         baseStats: pokemonSet.baseStats ? this.createEmptyStatMap(new Map(Object.entries(pokemonSet.baseStats)), 0) : this.createEmptyStatMap(new Map<string, number>(), 0),
         evs: pokemonSet.evs ? this.createEmptyStatMap(new Map(Object.entries(pokemonSet.evs)), 85) : this.createEmptyStatMap(new Map<string, number>(), 85),
-        ivs: pokemonSet.ivs ? this.createEmptyStatMap(new Map(Object.entries(pokemonSet.ivs)), 0) : this.createEmptyStatMap(new Map<string, number>(), 0)
+        ivs: pokemonSet.ivs ? this.createEmptyStatMap(new Map(Object.entries(pokemonSet.ivs)), 31) : this.createEmptyStatMap(new Map<string, number>(), 0)
       };
     });
   }
@@ -206,5 +208,9 @@ IVs: ${pkmn.ivs.get('hp')} HP / ${pkmn.ivs.get('attack')} Atk / ${pkmn.ivs.get('
 
   getPackNumber(nbrBooster: number, boostersLeft: number): number {
     return Math.max(1, nbrBooster - boostersLeft);
+  }
+
+  openShowdown() {
+    window.open('https://play.pokemonshowdown.com/teambuilder', '_blank');
   }
 }
