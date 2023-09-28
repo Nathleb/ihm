@@ -20,7 +20,3 @@ export class PokemonCardStatsComponent {
     return Math.floor(0.01 * (2 * this.baseStats.get(key)! + this.ivs.get(key)! + Math.floor(0.25 * this.evs.get(key)!)) * this.level) + 5;
   }
 }
-
-
-//floor(0.01 x (2 x Base + IV + floor(0.25 x EV)) x Level) + Level + 10
-// Other Stats = (floor(0.01 x(2 x Base + IV + floor(0.25 x EV)) x Level) + 5) x Nature;

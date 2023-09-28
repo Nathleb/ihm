@@ -6,6 +6,7 @@ import { PlayerDTO } from './interfaces/dtos/player.dto';
 import { RoomDTO } from './interfaces/dtos/room.dto';
 import { RoomService } from './room.service';
 import { Clipboard } from '@angular/cdk/clipboard';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-room',
@@ -13,7 +14,7 @@ import { Clipboard } from '@angular/cdk/clipboard';
   styleUrls: ['./room.component.scss']
 })
 export class RoomComponent {
-  constructor(private roomService: RoomService, public router: Router, private route: ActivatedRoute, private ngZone: NgZone, private clipboard: Clipboard) {
+  constructor(private roomService: RoomService, public router: Router, private route: ActivatedRoute, private ngZone: NgZone, private clipboard: Clipboard, private snackBar: MatSnackBar) {
   }
 
   @Input() room: RoomDTO;
@@ -60,7 +61,7 @@ export class RoomComponent {
         hasStarted: hasStarted,
         nbrBooster: nbrBooster,
         pkmnPerBooster: pkmnPerBooster,
-        boostersLeft: boostersLeft - 1
+        boostersLeft: boostersLeft
       };
       this.room = roomDTO;
     });
@@ -152,7 +153,7 @@ export class RoomComponent {
     this.finalTeam.forEach(pkmn => {
       exportString += `${pkmn.name} @ ${pkmn.item.name}
 Ability: ${pkmn.ability.name}
-Level: 50
+Level: 100
 Tera Type: ${pkmn.teraType}
 EVs: ${pkmn.evs.get('hp')} HP / ${pkmn.evs.get('attack')} Atk / ${pkmn.evs.get('defense')} Def / ${pkmn.evs.get('special-attack')} SpA / ${pkmn.evs.get('special-defense')} SpD / ${pkmn.evs.get('speed')} Spe
 Hardy Nature
@@ -163,10 +164,20 @@ IVs: ${pkmn.ivs.get('hp')} HP / ${pkmn.ivs.get('attack')} Atk / ${pkmn.ivs.get('
 - ${pkmn.moves[3]?.name}\n\n`;
     });
     this.clipboard.copy(exportString);
+    this.snackBar.open('Team copied to clipboard', 'Good!', {
+      duration: 1500,
+      horizontalPosition: 'center',
+      verticalPosition: 'bottom',
+    });
   }
 
   CopyLinkToClipboard() {
     this.clipboard.copy('http://localhost:4200' + this.router.url);
+    this.snackBar.open('Link copied to clipboard', 'Good!', {
+      duration: 1500,
+      horizontalPosition: 'center',
+      verticalPosition: 'bottom',
+    });
   }
 
   deserializePokemonSets(pokemonSets: PokemonSet[]): PokemonSet[] {
@@ -191,5 +202,9 @@ IVs: ${pkmn.ivs.get('hp')} HP / ${pkmn.ivs.get('attack')} Atk / ${pkmn.ivs.get('
     emptyMap.set('speed', fetchedMap.get('speed') || defaultValue);
 
     return emptyMap;
+  }
+
+  getPackNumber(nbrBooster: number, boostersLeft: number): number {
+    return Math.max(1, nbrBooster - boostersLeft);
   }
 }

@@ -44,8 +44,6 @@ export class AccueilComponent {
 
     this.roomService.socket.on("getSessionInfos", payload => {
       const { pseudo, inRoomId } = payload;
-      console.log("called");
-
       this.currentRoom = inRoomId;
       this.pseudo = pseudo;
       if (inRoomId !== DEFAULT.NO_ROOM && !this.isDialogOpen) {

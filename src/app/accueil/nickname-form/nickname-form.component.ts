@@ -1,4 +1,5 @@
-import { Component, Input, SimpleChanges } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { RoomService } from 'src/app/room/room.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { RoomService } from 'src/app/room/room.service';
 export class NicknameFormComponent {
 
 
-  constructor(private roomService: RoomService) {
+  constructor(private roomService: RoomService, private snackBar: MatSnackBar) {
 
   }
 
@@ -19,6 +20,11 @@ export class NicknameFormComponent {
     if (this.formIsValid()) {
       this.roomService.updateNickname(this.nickname);
     }
+    this.snackBar.open('You have a new nickname.', 'Good!', {
+      duration: 1500,
+      horizontalPosition: 'center',
+      verticalPosition: 'bottom',
+    });
   }
 
   formIsValid(): boolean {

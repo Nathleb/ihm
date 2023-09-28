@@ -1,60 +1,66 @@
 <mat-card class="game-parameters-form">
-  <mat-card-header class="form-field-text">
-    <input
-      id="roomName"
-      type="text"
-      matInput
-      placeholder="Cool room name"
-      [(ngModel)]="parameters.roomName"
-      required
-      maxlength="30"
-    />
-  </mat-card-header>
+  <form (ngSubmit)="startGame()" #form="ngForm">
+    <mat-card-header class="form-field-text">
+      <input
+        id="roomName"
+        type="text"
+        matInput
+        placeholder="Cool room name"
+        [(ngModel)]="parameters.roomName"
+        required
+        maxlength="30"
+        name="roomName"
+      />
+    </mat-card-header>
 
-  <mat-card-content class="form-middle-part">
-    <div class="form-column">
-      <label for="NmbrOfPlayers">Total players</label>
-      <input
-        id="NmbrOfPlayers"
-        type="number"
-        placeholder="8"
-        [(ngModel)]="parameters.size"
-        required
-        min="1"
-        max="16"
-      />
-    </div>
-    <div class="form-column">
-      <label for="NmbrOfPacks">Total packs</label>
-      <input
-        id="NmbrOfPacks"
-        type="number"
-        placeholder="1"
-        [(ngModel)]="parameters.nbrBooster"
-        required
-        min="1"
-        max="18"
-      />
-    </div>
-    <div class="form-column">
-      <label for="PkmnPerBooster">Pack size</label>
-      <input
-        id="PkmnPerBooster"
-        type="number"
-        placeholder="6"
-        [(ngModel)]="parameters.pkmnPerBooster"
-        required
-        min="1"
-        max="18"
-      />
-    </div>
-  </mat-card-content>
-  <button
-    mat-flat-button
-    color="primary"
-    (click)="startGame()"
-    [disabled]="!formIsValid()"
-  >
-    Create room
-  </button>
+    <mat-card-content class="form-middle-part">
+      <div class="form-column">
+        <label for="NmbrOfPlayers">Total players</label>
+        <input
+          id="NmbrOfPlayers"
+          type="number"
+          placeholder="8"
+          [(ngModel)]="parameters.size"
+          required
+          min="1"
+          max="16"
+          name="NmbrOfPlayers"
+        />
+      </div>
+      <div class="form-column">
+        <label for="NmbrOfPacks">Total packs</label>
+        <input
+          id="NmbrOfPacks"
+          type="number"
+          placeholder="1"
+          [(ngModel)]="parameters.nbrBooster"
+          required
+          min="1"
+          max="18"
+          name="NmbrOfPacks"
+        />
+      </div>
+      <div class="form-column">
+        <label for="PkmnPerBooster">Pack size</label>
+        <input
+          id="PkmnPerBooster"
+          type="number"
+          placeholder="6"
+          [(ngModel)]="parameters.pkmnPerBooster"
+          required
+          min="1"
+          max="18"
+          name="PkmnPerBooster"
+        />
+      </div>
+    </mat-card-content>
+    <button
+      type="submit"
+      mat-flat-button
+      color="primary"
+      [disabled]="!formIsValid() || form.invalid"
+    >
+      Create room
+    </button>
+  </form>
 </mat-card>

@@ -17,16 +17,15 @@
     <span
       *ngFor="let type of types"
       [style.background-color]="getColor(type)"
-      >{{ type }}</span
+      >{{ capitalizeWord(type) }}</span
     >
     <span
       matBadge="T"
       matBadgeColor="accent"
       matBadgeSize="small"
       matTooltip="Tera Type"
-      class="tera"
       [style.background-color]="getColor(tera)"
-      >{{ tera }}</span
+      >{{ capitalizeWord(tera) }}</span
     >
   </div>
 </div>

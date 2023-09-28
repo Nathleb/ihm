@@ -1,22 +1,25 @@
 <mat-card class="nickname-form">
-  <mat-card-header class="form-field-text">
-    <input
-      id="roomName"
-      type="text"
-      matInput
-      placeholder="Cool nickname"
-      [(ngModel)]="nickname"
-      required
-      maxlength="30"
-    />
-  </mat-card-header>
+  <form (ngSubmit)="updateNickname()" #form="ngForm">
+    <mat-card-header class="form-field-text">
+      <input
+        id="roomName"
+        type="text"
+        matInput
+        placeholder="Cool nickname"
+        [(ngModel)]="nickname"
+        required
+        maxlength="30"
+        name="nickname"
+      />
+    </mat-card-header>
 
-  <button
-    mat-flat-button
-    color="primary"
-    (click)="updateNickname()"
-    [disabled]="!formIsValid()"
-  >
-    Change nickname
-  </button>
+    <button
+      type="submit"
+      mat-flat-button
+      color="primary"
+      [disabled]="!formIsValid()"
+    >
+      Change nickname
+    </button>
+  </form>
 </mat-card>

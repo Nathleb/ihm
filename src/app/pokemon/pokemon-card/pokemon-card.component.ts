@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, SimpleChanges } from '@angular/core';
 import { PokemonSet } from '../interfaces/pokemonSet';
 
 @Component({

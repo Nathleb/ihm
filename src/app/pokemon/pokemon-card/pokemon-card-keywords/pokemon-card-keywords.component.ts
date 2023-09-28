@@ -25,7 +25,11 @@ export class PokemonCardKeywordsComponent {
 
 
   getColor(type: string): string {
-
     return colorTable[type];
+  }
+  capitalizeWord(str: string) {
+    return str.replace(/\b\w/g, function (txt) {
+      return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+    });
   }
 }

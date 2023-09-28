@@ -28,18 +28,24 @@ export class PokemonCardMovesComponent {
   }
 
   getTooltip(move: Move): string {
-    let tooltip: string = "";
+    let tooltip: string = `Type: ${this.capitalizeWord(move.type)}\n`;
     if (move.damage > 0) {
-      tooltip += `Power: ${move.damage}   `;
+      tooltip += `Power : ${move.damage} `;
     }
     if (move.accuracy != true && move.accuracy > 0) {
-      tooltip += `Accuracy: ${move.accuracy}`;
+      tooltip += `Accuracy : ${move.accuracy}`;
     }
-    if (tooltip.length > 0) {
+    if (move.accuracy != true && move.accuracy > 0 || move.damage > 0) {
       tooltip += "\n";
     }
 
-    tooltip += `Category: ${move.category}\n${move.description}`;
+    tooltip += `Category : ${move.category}\n\n${move.description}`;
     return tooltip;
+  }
+
+  capitalizeWord(str: string) {
+    return str.replace(/\b\w/g, function (txt) {
+      return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+    });
   }
 }
