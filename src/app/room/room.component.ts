@@ -21,6 +21,7 @@ export class RoomComponent {
   player: PlayerDTO;
   finalTeam: Array<PokemonSet> = new Array<PokemonSet>();
   isPlayerOwner: boolean;
+  isDraftOver: boolean = false;
 
   ngOnInit() {
     this.resetRoomAndPlayer();
@@ -43,7 +44,9 @@ export class RoomComponent {
   }
 
   nextPick(roomId: string, name: string) {
+
     this.roomService.nextPick(roomId, name);
+
   }
 
 
@@ -82,6 +85,10 @@ export class RoomComponent {
 
         this.player = updatedPlayer;
       });
+      this.setIsDraftOver();
+      if (this.isDraftOver) {
+        this.makeDefaultFinalTeam();
+      }
     });
 
     this.roomService.socket.on("error", (error: string) => {
@@ -127,7 +134,7 @@ export class RoomComponent {
     const finalTeamCpy = [...this.finalTeam];
     const teamCpy = [...this.player.team];
 
-    if (this.isDraftOver()) {
+    if (this.isDraftOver) {
       const index = this.finalTeam.findIndex((set) => set.name === newSet.name && set.role === newSet.role);
       const indexTeam = this.player.team.findIndex((set) => set.name === newSet.name && set.role === newSet.role);
 
@@ -143,15 +150,27 @@ export class RoomComponent {
     }
   }
 
-  isDraftOver(): boolean {
-    return this.player.team.length + this.finalTeam.length === this.room.nbrBooster * this.room.pkmnPerBooster;
+  makeDefaultFinalTeam() {
+    console.log("makeDefault");
+    const defaultTeam = [...this.player.team];
+    if (defaultTeam.length > 6) {
+      defaultTeam.splice(6);
+    }
+    defaultTeam.forEach(set => {
+      this.addOrRemoveFromTeam(set);
+    });
+  }
+
+  setIsDraftOver(): void {
+    this.isDraftOver = this.player.team.length + this.finalTeam.length === this.room.nbrBooster * this.room.pkmnPerBooster;
   }
 
   copyTeamToClipboard() {
     let exportString = "";
 
     this.finalTeam.forEach(pkmn => {
-      exportString += `${pkmn.name} @ ${pkmn.item.name}
+      exportString +=
+        `${pkmn.name} @ ${pkmn.item.name}
 Ability: ${pkmn.ability.name}
 Level: 100
 Tera Type: ${pkmn.teraType}
@@ -174,7 +193,6 @@ IVs: ${pkmn.ivs.get('hp')} HP / ${pkmn.ivs.get('attack')} Atk / ${pkmn.ivs.get('
   CopyLinkToClipboard() {
     this.clipboard.copy('https://pokemon-randraft-ihm.web.app' + this.router.url);
 
-    // this.clipboard.copy('http://localhost:4200' + this.router.url);
     this.snackBar.open('Link copied to clipboard', 'Good!', {
       duration: 1500,
       horizontalPosition: 'center',
@@ -189,7 +207,7 @@ IVs: ${pkmn.ivs.get('hp')} HP / ${pkmn.ivs.get('attack')} Atk / ${pkmn.ivs.get('
         ...pokemonSet,
         baseStats: pokemonSet.baseStats ? this.createEmptyStatMap(new Map(Object.entries(pokemonSet.baseStats)), 0) : this.createEmptyStatMap(new Map<string, number>(), 0),
         evs: pokemonSet.evs ? this.createEmptyStatMap(new Map(Object.entries(pokemonSet.evs)), 85) : this.createEmptyStatMap(new Map<string, number>(), 85),
-        ivs: pokemonSet.ivs ? this.createEmptyStatMap(new Map(Object.entries(pokemonSet.ivs)), 31) : this.createEmptyStatMap(new Map<string, number>(), 0)
+        ivs: pokemonSet.ivs ? this.createEmptyStatMap(new Map(Object.entries(pokemonSet.ivs)), 31) : this.createEmptyStatMap(new Map<string, number>(), 31)
       };
     });
   }
@@ -211,6 +229,13 @@ IVs: ${pkmn.ivs.get('hp')} HP / ${pkmn.ivs.get('attack')} Atk / ${pkmn.ivs.get('
   }
 
   openShowdown() {
+    this.copyTeamToClipboard();
+
+    this.snackBar.open('Team copied to clipboard', 'Good!', {
+      duration: 1500,
+      horizontalPosition: 'center',
+      verticalPosition: 'bottom',
+    });
     window.open('https://play.pokemonshowdown.com/teambuilder', '_blank');
   }
 }

@@ -11,7 +11,7 @@ import { GameParameters } from './interfaces/gameParameters';
 export class RoomService {
     public socket: Socket;
     // private readonly baseUrl = 'http://localhost:3000';
-    private readonly baseUrl = 'https://joyous-berry-fin.glitch.me';
+    private readonly baseUrl = 'https://adhesive-handy-flyingfish.glitch.me';
 
     constructor(private http: HttpClient) {
         this.socket = io(this.baseUrl, {

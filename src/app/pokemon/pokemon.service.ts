@@ -9,7 +9,7 @@ import { map, Observable } from 'rxjs';
 export class PokemonService {
 
   // private baseUrl = 'http://localhost:3000';
-  private baseUrl = 'https://joyous-berry-fin.glitch.me';
+  private baseUrl = 'https://adhesive-handy-flyingfish.glitch.me';
 
   constructor(private http: HttpClient) { }
 

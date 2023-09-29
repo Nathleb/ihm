@@ -1,11 +1,11 @@
 <div class="room-container">
   <app-table-sits
     [players]="room.players"
-    [rotation]="room.boostersLeft % 2 == 0"
+    [rotation]="getPackNumber(room.nbrBooster, room.boostersLeft) % 2 == 1"
   ></app-table-sits>
   <div class="button-row">
     <button
-      *ngIf="isDraftOver()"
+      *ngIf="isDraftOver"
       mat-raised-button
       color="primary"
       (click)="copyTeamToClipboard()"
@@ -35,32 +35,32 @@
       Copy room link <mat-icon>link</mat-icon>
     </button>
     <button
-      *ngIf="isDraftOver()"
+      *ngIf="isDraftOver"
       mat-raised-button
       color="accent"
       (click)="openShowdown()"
       title="open Pokemon Showdown"
     >
-      Go to Showdown <mat-icon>open_in_new</mat-icon>
+      Copy and go to Showdown <mat-icon>open_in_new</mat-icon>
     </button>
   </div>
   <div class="game-ui" *ngIf="room.hasStarted">
-    <h1 *ngIf="!isDraftOver()">
+    <h1 *ngIf="!isDraftOver">
       📦 Pack ({{ getPackNumber(room.nbrBooster, room.boostersLeft) }}/{{
         room.nbrBooster
       }}) :
     </h1>
     <app-pokemon-card-grid
-      *ngIf="!isDraftOver()"
+      *ngIf="!isDraftOver"
       [pokemonSets]="player.toChoseFrom"
       [hasPicked]="player.hasPicked"
       (picked)="nextPick(room.id, $event)"
     >
     </app-pokemon-card-grid>
 
-    <h1 *ngIf="isDraftOver()">🔥 The final team :</h1>
+    <h1 *ngIf="isDraftOver">🔥 The final team :</h1>
     <app-pokemon-card-grid
-      *ngIf="isDraftOver()"
+      *ngIf="isDraftOver"
       [pokemonSets]="finalTeam"
       (addOrRemoveFromTeam)="addOrRemoveFromTeam($event)"
     ></app-pokemon-card-grid>
