@@ -1,15 +1,16 @@
 <div class="welcome-text">
-  <span>Welcome to </span>
-  <span class="big name">Draftmon</span>
-  <span class="big">!</span>
+  <h1>
+    Welcome to <span class="big name" (click)="greeting()">Draftmon</span
+    ><span class="big">!</span>
+  </h1>
+
   <br />
-  <br />
-  <span class="sub">
+  <p class="sub">
     You can here draft pokemons with your friends or foes and export your team
     to battle on
-    <span class="underline sub">Pokemon Showdown</span>.
+    <span class="underline" (click)="openShowdown()">Pokemon Showdown</span>.
     <br />
-    Click <span class="underline sub">here</span> to get started and ensure
+    Click <span class="underline" (click)="openTutorial()">here</span> to ensure
     you're making the most out of Draftmon!
-  </span>
+  </p>
 </div>

@@ -1,14 +1,11 @@
 <mat-toolbar color="primary">
   <div class="homeButton">
     <img (click)="home()" src="../../assets/logo.png" alt="logo" />
-    <span (click)="home()">Draftmon: Catch'Em Six!</span>
+    <span (click)="home()">Draftmon: Catch Six of'Em!</span>
   </div>
   <div class="toolbar-icons">
-    <button mat-icon-button>
+    <button mat-icon-button (click)="openTutorial()">
       <mat-icon>question_mark</mat-icon>
     </button>
-    <!-- <button mat-icon-button>
-      <mat-icon>coffee</mat-icon>
-    </button> -->
   </div>
 </mat-toolbar>

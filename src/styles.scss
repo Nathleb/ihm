@@ -5,7 +5,7 @@
 @include mat-core();
 
 $my-primary: mat-palette($mat-teal, 800);
-$my-accent: mat-palette($mat-yellow, A200, A100, A400);
+$my-accent: mat-palette($mat-yellow, 500);
 $my-warn: mat-palette($mat-red, 400);
 
 $my-theme: mat-light-theme($my-primary, $my-accent, $my-warn);

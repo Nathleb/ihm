@@ -1,8 +1,9 @@
 .name {
+  cursor: pointer;
   font-family: "Baloo 2", cursive;
   color: var(--color-primary);
   font-weight: 800;
-  text-decoration: underline solid 4px var(--color-warn);
+  text-decoration: underline solid 4px var(--color-accent);
 }
 
 .big {
@@ -13,16 +14,13 @@
   font-size: 1rem;
 }
 
-span {
-  font-size: 1.5rem;
-}
-
 .underline {
+  cursor: pointer;
   font-family: "Baloo 2", cursive;
   font-weight: 600;
   font-size: 1.2rem;
   color: var(--color-primary);
-  text-decoration: underline solid 2px var(--color-warn);
+  text-decoration: underline solid 2px var(--color-accent);
 }
 
 .welcome-text {

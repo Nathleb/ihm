@@ -1,0 +1,30 @@
+.tutorial-container {
+  margin-top: 3vh;
+  box-sizing: border-box;
+  padding: 30px;
+  border-radius: 20px;
+  width: min(80%, 1500px);
+  box-shadow: rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+h1 {
+  font-family: "Baloo 2", cursive;
+  color: var(--color-primary);
+  font-weight: 800;
+  text-decoration: underline solid 3px var(--color-accent);
+}
+
+.container {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.copy {
+  cursor: pointer;
+  color: var(--color-primary);
+  font-weight: 600;
+  text-decoration: underline solid 2px var(--color-accent);
+}

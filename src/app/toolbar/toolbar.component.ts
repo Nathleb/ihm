@@ -12,6 +12,10 @@ export class ToolbarComponent {
   }
 
 
+  openTutorial() {
+    this.router.navigate(["tutorial"]);
+  }
+
   home() {
     this.router.navigate([""]);
   }
