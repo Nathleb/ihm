@@ -172,7 +172,7 @@ export class RoomComponent {
       exportString +=
         `${pkmn.name} @ ${pkmn.item.name}
 Ability: ${pkmn.ability.name}
-Level: 100
+Level: ${pkmn.level}
 Tera Type: ${pkmn.teraType}
 EVs: ${pkmn.evs.get('hp')} HP / ${pkmn.evs.get('attack')} Atk / ${pkmn.evs.get('defense')} Def / ${pkmn.evs.get('special-attack')} SpA / ${pkmn.evs.get('special-defense')} SpD / ${pkmn.evs.get('speed')} Spe
 Hardy Nature

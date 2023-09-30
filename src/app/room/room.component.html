@@ -1,5 +1,6 @@
 <div class="room-container">
   <app-table-sits
+    *ngIf="!isDraftOver"
     [players]="room.players"
     [rotation]="getPackNumber(room.nbrBooster, room.boostersLeft) % 2 == 1"
   ></app-table-sits>

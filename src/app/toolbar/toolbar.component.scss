@@ -9,6 +9,11 @@ mat-toolbar {
     rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
   border-bottom: 5px solid var(--color-accent);
 
+  span {
+    font-family: "Baloo 2", cursive;
+    font-weight: 800;
+  }
+
   .homeButton {
     display: flex;
     flex-direction: row;

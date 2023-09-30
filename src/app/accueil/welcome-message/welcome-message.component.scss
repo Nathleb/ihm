@@ -1,0 +1,33 @@
+.name {
+  font-family: "Baloo 2", cursive;
+  color: var(--color-primary);
+  font-weight: 800;
+  text-decoration: underline solid 4px var(--color-warn);
+}
+
+.big {
+  font-size: 1.6rem;
+}
+
+.sub {
+  font-size: 1rem;
+}
+
+span {
+  font-size: 1.5rem;
+}
+
+.underline {
+  font-family: "Baloo 2", cursive;
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: var(--color-primary);
+  text-decoration: underline solid 2px var(--color-warn);
+}
+
+.welcome-text {
+  box-sizing: border-box;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}

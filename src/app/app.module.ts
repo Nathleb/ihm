@@ -36,6 +36,7 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
 import { RoomListComponent } from './accueil/room-list/room-list.component';
 import { NicknameFormComponent } from './accueil/nickname-form/nickname-form.component';
 import { ReconnectModalComponent } from './accueil/reconnect-modal/reconnect-modal.component';
+import { WelcomeMessageComponent } from './accueil/welcome-message/welcome-message.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { ReconnectModalComponent } from './accueil/reconnect-modal/reconnect-mod
     RoomListComponent,
     NicknameFormComponent,
     ReconnectModalComponent,
+    WelcomeMessageComponent,
   ],
   imports: [
     BrowserModule,
