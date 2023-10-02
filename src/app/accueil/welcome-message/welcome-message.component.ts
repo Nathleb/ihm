@@ -13,19 +13,10 @@ export class WelcomeMessageComponent {
   constructor(private router: Router, private snackBar: MatSnackBar) { }
 
   openShowdown() {
-    window.open('https://play.pokemonshowdown.com/', '_blank');
+    window.open('https://play.pokemonshowdown.com/teambuilder', '_blank');
   }
 
   openTutorial() {
     this.router.navigate(["tutorial"]);
   }
-
-  greeting() {
-    this.snackBar.open("Pretty generic name.", "Indeed!", {
-      duration: 1000,
-      horizontalPosition: 'center',
-      verticalPosition: 'bottom',
-    });
-  }
-
 }

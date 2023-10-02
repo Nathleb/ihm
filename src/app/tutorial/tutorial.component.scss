@@ -5,6 +5,8 @@
   border-radius: 20px;
   width: min(80%, 1500px);
   box-shadow: rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  display: flex;
+  flex-direction: column;
 }
 
 h1 {
@@ -12,6 +14,11 @@ h1 {
   color: var(--color-primary);
   font-weight: 800;
   text-decoration: underline solid 3px var(--color-accent);
+}
+
+.bold {
+  color: var(--color-primary);
+  font-weight: 600;
 }
 
 .container {
@@ -27,4 +34,12 @@ h1 {
   color: var(--color-primary);
   font-weight: 600;
   text-decoration: underline solid 2px var(--color-accent);
+}
+
+span {
+  max-width: 60%;
+}
+
+p {
+  max-width: 60%;
 }
