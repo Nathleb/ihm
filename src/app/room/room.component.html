@@ -47,11 +47,20 @@
     <button
       *ngIf="isDraftOver"
       mat-raised-button
+      color="warn"
+      (click)="copyChallengeRequest()"
+      title="open Pokemon Showdown"
+    >
+      Copy challenge command <mat-icon>whatshot</mat-icon>
+    </button>
+    <button
+      *ngIf="isDraftOver"
+      mat-raised-button
       color="accent"
       (click)="openShowdown()"
       title="open Pokemon Showdown"
     >
-      Copy and go to Showdown <mat-icon>open_in_new</mat-icon>
+      Export and go to Showdown <mat-icon>open_in_new</mat-icon>
     </button>
   </div>
   <div class="game-ui" *ngIf="room.hasStarted">

@@ -16,9 +16,6 @@ export class TableSitsComponent {
     this.players.sort((a, b) => {
       return a.sit! - b.sit!;
     });
-
-    console.log(this.nickname);
-
   }
 
 }
