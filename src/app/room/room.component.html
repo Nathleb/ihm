@@ -1,6 +1,7 @@
 <div class="room-container">
   <app-table-sits
     *ngIf="!isDraftOver"
+    [nickname]="player.pseudo"
     [players]="room.players"
     [rotation]="getPackNumber(room.nbrBooster, room.boostersLeft) % 2 == 1"
   ></app-table-sits>
@@ -22,7 +23,7 @@
       mat-raised-button
       color="primary"
       (click)="startGame(room.id)"
-      [disabled]="room.players.length < 2"
+      [disabled]="room.players.length < 1"
     >
       Launch <mat-icon>cached</mat-icon>
     </button>

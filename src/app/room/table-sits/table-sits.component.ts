@@ -8,6 +8,7 @@ import { PlayerDTO } from '../interfaces/dtos/player.dto';
 })
 export class TableSitsComponent {
   @Input() players: Partial<PlayerDTO>[] = [];
+  @Input() nickname: string;
   @Input() rotation: boolean = true;
 
 
@@ -15,6 +16,9 @@ export class TableSitsComponent {
     this.players.sort((a, b) => {
       return a.sit! - b.sit!;
     });
+
+    console.log(this.nickname);
+
   }
 
 }

@@ -191,7 +191,7 @@ IVs: ${pkmn.ivs.get('hp')} HP / ${pkmn.ivs.get('attack')} Atk / ${pkmn.ivs.get('
   }
 
   CopyLinkToClipboard() {
-    this.clipboard.copy('https://pokemon-randraft-ihm.web.app' + this.router.url);
+    this.clipboard.copy('https://draftmon-web.web.app' + this.router.url);
 
     this.snackBar.open('Link copied to clipboard', 'Good!', {
       duration: 1500,
