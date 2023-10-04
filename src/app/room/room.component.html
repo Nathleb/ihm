@@ -42,7 +42,7 @@
       (click)="CopyLinkToClipboard()"
       title="Copy room link for sharing"
     >
-      Copy room link <mat-icon>link</mat-icon>
+      Copy link to {{ room.name }} <mat-icon>link</mat-icon>
     </button>
     <button
       *ngIf="isDraftOver"
