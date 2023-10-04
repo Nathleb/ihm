@@ -33,4 +33,7 @@ export class NicknameFormComponent {
       new RegExp(/^[a-zA-Z0-9\- ]+$/).test(this.nickname);
   }
 
+  onFocus(event: any): void {
+    event.target.select();
+  }
 }

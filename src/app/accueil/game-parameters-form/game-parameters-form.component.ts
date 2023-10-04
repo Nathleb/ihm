@@ -34,4 +34,7 @@ export class GameParametersFormComponent {
       this.parameters.roomName.length > 3 && this.parameters.roomName.length < 30
     );
   }
+  onFocus(event: any): void {
+    event.target.select();
+  }
 }

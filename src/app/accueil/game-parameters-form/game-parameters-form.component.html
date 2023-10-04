@@ -9,6 +9,7 @@
         [(ngModel)]="parameters.roomName"
         required
         maxlength="30"
+        (focus)="onFocus($event)"
         name="roomName"
       />
     </mat-card-header>
@@ -20,6 +21,7 @@
           id="NmbrOfPlayers"
           type="number"
           placeholder="8"
+          (focus)="onFocus($event)"
           [(ngModel)]="parameters.size"
           required
           min="1"
@@ -33,6 +35,7 @@
           id="NmbrOfPacks"
           type="number"
           placeholder="1"
+          (focus)="onFocus($event)"
           [(ngModel)]="parameters.nbrBooster"
           required
           min="1"
@@ -46,6 +49,7 @@
           id="PkmnPerBooster"
           type="number"
           placeholder="6"
+          (focus)="onFocus($event)"
           [(ngModel)]="parameters.pkmnPerBooster"
           required
           min="1"

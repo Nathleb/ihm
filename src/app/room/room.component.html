@@ -1,7 +1,7 @@
 <div class="room-container">
   <app-table-sits
     *ngIf="!isDraftOver"
-    [nickname]="player.pseudo"
+    [nickname]="nickname"
     [players]="room.players"
     [rotation]="getPackNumber(room.nbrBooster, room.boostersLeft) % 2 == 1"
   ></app-table-sits>
@@ -63,6 +63,8 @@
       Export and go to Showdown <mat-icon>open_in_new</mat-icon>
     </button>
   </div>
+  <app-nickname-form *ngIf="!room.hasStarted" [nickname]="nickname">
+  </app-nickname-form>
   <div class="game-ui" *ngIf="room.hasStarted">
     <h1 *ngIf="!isDraftOver">
       📦 Pack ({{ getPackNumber(room.nbrBooster, room.boostersLeft) }}/{{

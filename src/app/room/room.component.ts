@@ -19,6 +19,7 @@ export class RoomComponent {
 
   @Input() room: RoomDTO;
   player: PlayerDTO;
+  nickname: string;
   finalTeam: Array<PokemonSet> = new Array<PokemonSet>();
   isPlayerOwner: boolean;
   isDraftOver: boolean = false;
@@ -32,6 +33,7 @@ export class RoomComponent {
         this.roomService.isPlayerOwner(roomId);
       }
     });
+    this.roomService.getSessionInfos();
     this.subscribeEvents();
   }
 
@@ -98,6 +100,11 @@ export class RoomComponent {
     this.roomService.socket.on("isPlayerOwner", (isPlayerOwner: boolean) => {
       this.isPlayerOwner = isPlayerOwner;
     });
+
+    this.roomService.socket.on("getSessionInfos", payload => {
+      const { pseudo } = payload;
+      this.nickname = pseudo;
+    });
   }
 
   unsubscribeEvents() {
@@ -106,6 +113,7 @@ export class RoomComponent {
     this.roomService.socket.off("nextPick");
     this.roomService.socket.off("error");
     this.roomService.socket.off("isPlayerOwner");
+    this.roomService.socket.off("getSessionInfos");
   }
 
   resetRoomAndPlayer() {
