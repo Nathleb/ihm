@@ -6,5 +6,8 @@
     [ngClass]="{ selected: set.name === selected && !hasPicked }"
   >
     <app-pokemon-card [pokemonSet]="set"> </app-pokemon-card>
+    <div class="overlay" *ngIf="set.name === selected && !hasPicked">
+      Click to pick !
+    </div>
   </mat-card>
 </div>
