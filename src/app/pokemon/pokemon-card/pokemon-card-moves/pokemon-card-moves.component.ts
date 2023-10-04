@@ -48,4 +48,8 @@ export class PokemonCardMovesComponent {
       return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
     });
   }
+
+  preventDefault(event: Event) {
+    event.stopPropagation();
+  }
 }

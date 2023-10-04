@@ -3,12 +3,14 @@
     <span
       class="keyword"
       [matTooltip]="item.description"
+      (click)="preventDefault($event)"
       [matTooltipShowDelay]="100"
       >{{ item.name }}</span
     >
     <span
       class="keyword"
       [matTooltip]="ability.description"
+      (click)="preventDefault($event)"
       [matTooltipShowDelay]="100"
       >{{ ability.name }}</span
     >
@@ -17,6 +19,7 @@
     <span
       *ngFor="let type of types"
       [style.background-color]="getColor(type)"
+      [style.color]="getTextColor(type)"
       >{{ capitalizeWord(type) }}</span
     >
     <span
@@ -25,6 +28,7 @@
       matBadgeSize="small"
       matTooltip="Tera Type"
       [style.background-color]="getColor(tera)"
+      [style.color]="getTextColor(tera)"
       >{{ capitalizeWord(tera) }}</span
     >
   </div>

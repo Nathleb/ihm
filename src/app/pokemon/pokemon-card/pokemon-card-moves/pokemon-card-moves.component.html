@@ -5,6 +5,7 @@
     [matTooltip]="getTooltip(move)"
     matTooltipClass="myTooltip"
     [style.border-color]="getColor(move.type)"
+    (click)="preventDefault($event)"
   >
     {{ move.name }}
   </div>
