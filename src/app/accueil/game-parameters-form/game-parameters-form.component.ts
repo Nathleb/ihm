@@ -16,7 +16,8 @@ export class GameParametersFormComponent {
       roomName: `Room-${crypto.randomUUID().slice(0, 4)}`,
       size: 8,
       pkmnPerBooster: 6,
-      nbrBooster: 1
+      nbrBooster: 1,
+      isPublic: true
     };
   }
 

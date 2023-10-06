@@ -11,6 +11,7 @@
         maxlength="30"
         (focus)="onFocus($event)"
         name="roomName"
+        class="text-input"
       />
     </mat-card-header>
 
@@ -27,6 +28,7 @@
           min="1"
           max="16"
           name="NmbrOfPlayers"
+          class="number-input"
         />
       </div>
       <div class="form-column">
@@ -41,6 +43,7 @@
           min="1"
           max="18"
           name="NmbrOfPacks"
+          class="number-input"
         />
       </div>
       <div class="form-column">
@@ -55,7 +58,19 @@
           min="1"
           max="18"
           name="PkmnPerBooster"
+          class="number-input"
         />
+      </div>
+      <div class="form-column">
+        <label for="isRoomPublic">Public Room</label>
+        <label class="checkbox-input">
+          <input
+            id="isRoomPublic"
+            type="checkbox"
+            [(ngModel)]="parameters.isPublic"
+            name="isRoomPublic" />
+          <span class="custom-pill"></span
+        ></label>
       </div>
     </mat-card-content>
     <button

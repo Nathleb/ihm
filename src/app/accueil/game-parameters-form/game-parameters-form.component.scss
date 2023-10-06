@@ -39,7 +39,7 @@ button {
   padding: 0;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
-  input {
+  .text-input {
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     padding: 5px;
@@ -48,7 +48,8 @@ button {
       rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
       rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
   }
-  input:focus {
+
+  .text-input:focus {
     box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset,
       rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
   }
@@ -67,19 +68,57 @@ mat-card-content {
   align-items: center;
   justify-content: center;
 
-  input {
+  .number-input {
+    cursor: pointer;
     text-align: center;
     width: 25%;
     min-width: 40px;
+    min-height: 20px;
     border-radius: 20px;
     overflow: hidden;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
       rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
       rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
   }
-  input:focus {
+  .number-input:focus {
     box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset,
       rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+  }
+
+  .checkbox-input input[type="checkbox"] {
+    display: none;
+  }
+
+  .checkbox-input .custom-pill {
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+    background-color: var(--color-warn);
+    border-radius: 15px;
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .checkbox-input .custom-pill::before {
+    content: "";
+    display: block;
+    width: 18px;
+    height: 18px;
+    background-color: white;
+    border-radius: 50%;
+    position: absolute;
+    left: 1px;
+    top: 1px;
+    transition: transform 0.3s;
+  }
+
+  .checkbox-input input[type="checkbox"]:checked + .custom-pill {
+    background-color: var(--color-primary);
+  }
+
+  .checkbox-input input[type="checkbox"]:checked + .custom-pill::before {
+    transform: translateX(20px);
   }
 }
 
