@@ -1,11 +1,19 @@
 <div class="player-table">
   <div
     *ngFor="let player of players"
-    [ngClass]="rotation ? 'player-sit-left' : 'player-sit-right'"
+    [ngClass]="
+      rotation ? 'player-sit player-sit-left' : 'player-sit player-sit-right'
+    "
     [style.border-color]="
       player.hasPicked ? 'var(--color-primary)' : 'var(--color-warn)'
     "
   >
-    🙋 {{ player.pseudo }}
+    {{ player.pseudo }}
+    <div [ngClass]="player.isConnected ? 'green-dot' : 'grey-dot'"></div>
+    <mat-icon
+      *ngIf="isPlayerOwner && player.pseudo !== nickname"
+      (click)="playerSitOnClick(player)"
+      >clear</mat-icon
+    >
   </div>
 </div>

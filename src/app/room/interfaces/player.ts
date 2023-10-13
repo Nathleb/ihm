@@ -6,4 +6,5 @@ export interface Player {
     team: PokemonSet[];
     sit: number;
     hasPicked: boolean;
+    isConnected: boolean;
 }

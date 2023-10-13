@@ -6,4 +6,5 @@ export interface PlayerDTO {
     team: PokemonSet[];
     sit: number;
     hasPicked: boolean;
+    isConnected: boolean;
 }

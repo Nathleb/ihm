@@ -10,8 +10,8 @@ import { GameParameters } from './interfaces/gameParameters';
 })
 export class RoomService {
     public socket: Socket;
-    // private readonly baseUrl = 'http://localhost:3000';
-    private readonly baseUrl = 'https://adhesive-handy-flyingfish.glitch.me';
+    private readonly baseUrl = 'http://localhost:3000';
+    // private readonly baseUrl = 'https://adhesive-handy-flyingfish.glitch.me';
 
     constructor(private http: HttpClient) {
         this.socket = io(this.baseUrl, {
@@ -30,6 +30,10 @@ export class RoomService {
 
     createRoom(gameParameters: GameParameters) {
         this.socket.emit('createRoom', JSON.stringify({ ...gameParameters }));
+    }
+
+    kickPlayer(sit: number, roomId: string) {
+        this.socket.emit('kickPlayer', JSON.stringify({ sit, roomId }));
     }
 
     joinRoom(roomId: string) {

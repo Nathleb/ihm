@@ -1,4 +1,4 @@
-import { Component, Input, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, Output, SimpleChanges } from '@angular/core';
 import { PlayerDTO } from '../interfaces/dtos/player.dto';
 
 @Component({
@@ -10,12 +10,19 @@ export class TableSitsComponent {
   @Input() players: Partial<PlayerDTO>[] = [];
   @Input() nickname: string;
   @Input() rotation: boolean = true;
+  @Input() isPlayerOwner: boolean;
+
+  @Output() playerEmitter: EventEmitter<Partial<PlayerDTO>> = new EventEmitter<Partial<PlayerDTO>>();
 
 
   ngOnChanges(simpleChanges: SimpleChanges) {
     this.players.sort((a, b) => {
       return a.sit! - b.sit!;
     });
+  }
+
+  playerSitOnClick(player: Partial<PlayerDTO>) {
+    this.playerEmitter.emit(player);
   }
 
 }

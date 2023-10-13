@@ -4,6 +4,8 @@
     [nickname]="nickname"
     [players]="room.players"
     [rotation]="getPackNumber(room.nbrBooster, room.boostersLeft) % 2 == 1"
+    (playerEmitter)="kickPlayer($event)"
+    [isPlayerOwner]="isPlayerOwner"
   ></app-table-sits>
   <div class="button-row">
     <button

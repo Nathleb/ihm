@@ -105,6 +105,10 @@ export class RoomComponent {
       const { pseudo } = payload;
       this.nickname = pseudo;
     });
+
+    this.roomService.socket.on("kickPlayer", payload => {
+      this.router.navigate([""]);
+    });
   }
 
   unsubscribeEvents() {
@@ -114,6 +118,7 @@ export class RoomComponent {
     this.roomService.socket.off("error");
     this.roomService.socket.off("isPlayerOwner");
     this.roomService.socket.off("getSessionInfos");
+    this.roomService.socket.off("kickPlayer");
   }
 
   resetRoomAndPlayer() {
@@ -134,8 +139,15 @@ export class RoomComponent {
       toChoseFrom: new Array(),
       team: new Array(),
       sit: 0,
-      hasPicked: false
+      hasPicked: false,
+      isConnected: true
     };
+  }
+
+  kickPlayer(player: Partial<PlayerDTO>) {
+    if (this.isPlayerOwner && player.sit && this.room.players.length > 0) {
+      this.roomService.kickPlayer(player.sit, this.room.id);
+    }
   }
 
   addOrRemoveFromTeam(newSet: PokemonSet) {
@@ -159,7 +171,6 @@ export class RoomComponent {
   }
 
   makeDefaultFinalTeam() {
-    console.log("makeDefault");
     const defaultTeam = [...this.player.team];
     if (defaultTeam.length > 6) {
       defaultTeam.splice(6);
