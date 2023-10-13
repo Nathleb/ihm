@@ -14,7 +14,7 @@ export class TutorialComponent {
 
   }
   copyChallengeRequest() {
-    this.clipboard.copy("/challenge [Gen 9] Custom Game @@@ !Team Preview)");
+    this.clipboard.copy("/challenge [Gen 9] Custom Game @@@ !Team Preview");
     this.snackBar.open('Copied to clipboard', 'Let\'s Battle!', {
       duration: 1500,
       horizontalPosition: 'center',

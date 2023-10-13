@@ -178,7 +178,7 @@ export class RoomComponent {
 
     this.finalTeam.forEach(pkmn => {
       exportString +=
-        `${pkmn.name} @ ${pkmn.item.name}
+        `${pkmn.name} @ ${pkmn.item.name ? pkmn.item.name : ""}
 Ability: ${pkmn.ability.name}
 Level: ${pkmn.level}
 Tera Type: ${pkmn.teraType}
@@ -248,7 +248,7 @@ IVs: ${pkmn.ivs.get('hp')} HP / ${pkmn.ivs.get('attack')} Atk / ${pkmn.ivs.get('
   }
 
   copyChallengeRequest() {
-    this.clipboard.copy("/challenge [Gen 9] Custom Game @@@ !Team Preview)");
+    this.clipboard.copy("/challenge [Gen 9] Custom Game @@@ !Team Preview");
     this.snackBar.open('Copied to clipboard', 'Let\'s Battle!', {
       duration: 1500,
       horizontalPosition: 'center',

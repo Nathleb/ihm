@@ -44,9 +44,8 @@ button {
     border-top-right-radius: 20px;
     padding: 5px;
     width: 100%;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
-      rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
-      rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    box-shadow: rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    transition: box-shadow 0.3s ease;
   }
 
   .text-input:focus {
@@ -76,17 +75,21 @@ mat-card-content {
     min-height: 20px;
     border-radius: 20px;
     overflow: hidden;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
-      rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
-      rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    box-shadow: rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    transition: box-shadow 0.3s ease;
   }
   .number-input:focus {
     box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset,
       rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
   }
 
+  .checkbox-input {
+    height: 20px;
+  }
+
   .checkbox-input input[type="checkbox"] {
     display: none;
+    height: 20px;
   }
 
   .checkbox-input .custom-pill {
@@ -94,7 +97,7 @@ mat-card-content {
     width: 40px;
     height: 20px;
     background-color: var(--color-warn);
-    border-radius: 15px;
+    border-radius: 20px;
     position: relative;
     cursor: pointer;
     transition: background-color 0.3s;
@@ -110,7 +113,7 @@ mat-card-content {
     position: absolute;
     left: 1px;
     top: 1px;
-    transition: transform 0.3s;
+    transition: transform 0.3s ease;
   }
 
   .checkbox-input input[type="checkbox"]:checked + .custom-pill {
