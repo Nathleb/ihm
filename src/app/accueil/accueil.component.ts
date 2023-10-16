@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { DEFAULT } from '../pokemon/interfaces/enums/default.enum';
@@ -6,6 +6,7 @@ import { RoomDTO } from '../room/interfaces/dtos/room.dto';
 import { GameParameters } from '../room/interfaces/gameParameters';
 import { RoomService } from '../room/room.service';
 import { ReconnectModalComponent } from './reconnect-modal/reconnect-modal.component';
+import { RoomListComponent } from './room-list/room-list.component';
 
 @Component({
   selector: 'app-accueil',
@@ -23,6 +24,8 @@ export class AccueilComponent {
   isDialogOpen: boolean = false;
 
   rooms: RoomDTO[] = new Array();
+
+  @ViewChild("roomListComponent", { static: false }) roomListComponent: RoomListComponent;
 
   ngOnInit() {
     this.roomService.getSessionInfos();
@@ -57,6 +60,7 @@ export class AccueilComponent {
           this.isDialogOpen = false;
         });
       }
+      this.roomListComponent.refresh();
     });
   }
   unsubscribeEvents() {

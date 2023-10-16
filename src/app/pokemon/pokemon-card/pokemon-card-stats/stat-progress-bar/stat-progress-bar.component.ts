@@ -14,9 +14,9 @@ export class StatProgressBarComponent {
     hp: "hp",
     attack: "atk",
     defense: "def",
-    "special-attack": "spAtk",
-    "special-defense": "spDef",
-    speed: "spd"
+    "special-attack": "spA",
+    "special-defense": "spD",
+    speed: "spe"
   };
 
 

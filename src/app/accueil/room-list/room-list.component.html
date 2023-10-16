@@ -9,6 +9,15 @@
     />
   </mat-card-header>
   <mat-card class="room-list-card">
+    <button
+      mat-stroked-button
+      color="warn"
+      class="joinRoom-button"
+      *ngIf="currentRoomId && currentRoomId !== DEFAULT.NO_ROOM"
+      (click)="redirectToRoom(currentRoomId)"
+    >
+      Reconnect to current room
+    </button>
     <ng-container
       *ngFor="
         let room of filteredRooms

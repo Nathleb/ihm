@@ -33,11 +33,13 @@ export class PokemonCardKeywordsComponent {
   }
   capitalizeWord(str: string) {
     return str.replace(/\b\w/g, function (txt) {
-      return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+      return txt.charAt(0).toUpperCase() + txt.substring(1).toLowerCase();
     });
   }
 
   preventDefault(event: Event) {
-    event.stopPropagation();
+    if (event.type === 'touchstart' || event.type === 'touchend') {
+      event.stopPropagation();
+    }
   }
 }

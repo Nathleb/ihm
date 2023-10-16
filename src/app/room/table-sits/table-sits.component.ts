@@ -11,6 +11,7 @@ export class TableSitsComponent {
   @Input() nickname: string;
   @Input() rotation: boolean = true;
   @Input() isPlayerOwner: boolean;
+  @Input() hasStarted: boolean;
 
   @Output() playerEmitter: EventEmitter<Partial<PlayerDTO>> = new EventEmitter<Partial<PlayerDTO>>();
 

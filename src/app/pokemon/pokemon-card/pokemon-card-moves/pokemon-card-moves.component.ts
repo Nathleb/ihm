@@ -50,6 +50,8 @@ export class PokemonCardMovesComponent {
   }
 
   preventDefault(event: Event) {
-    event.stopPropagation();
+    if (event.type === 'touchstart' || event.type === 'touchend') {
+      event.stopPropagation();
+    }
   }
 }

@@ -106,7 +106,7 @@ export class RoomComponent {
       this.nickname = pseudo;
     });
 
-    this.roomService.socket.on("kickPlayer", payload => {
+    this.roomService.socket.on("kicked", payload => {
       this.router.navigate([""]);
     });
   }
