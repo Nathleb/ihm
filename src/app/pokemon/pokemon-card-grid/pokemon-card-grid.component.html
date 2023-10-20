@@ -8,5 +8,8 @@
     }"
   >
     <app-pokemon-card [pokemonSet]="set"> </app-pokemon-card>
+    <div class="overlay" *ngIf="set.name === selected && !hasPicked">
+      <img class="pokeball" src="../../assets/poke.png" alt="logo" />
+    </div>
   </mat-card>
 </div>

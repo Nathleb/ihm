@@ -10,6 +10,10 @@
   row-gap: 15px;
 }
 
+.selected {
+  scale: 1.03;
+}
+
 @media (max-width: 700px) {
   .grid-container {
     grid-template-columns: repeat(1, 1fr);
@@ -31,5 +35,39 @@
 @media (min-width: 1601px) {
   .grid-container {
     grid-template-columns: repeat(4, 1fr);
+  }
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+  }
+  .pokeball {
+    animation: shake 0.5s linear infinite;
+    transform-origin: center;
+  }
+
+  @keyframes shake {
+    0% {
+      transform: rotate(0deg);
+    }
+    25% {
+      transform: rotate(5deg);
+    }
+    50% {
+      transform: rotate(0eg);
+    }
+    75% {
+      transform: rotate(-5deg);
+    }
+    100% {
+      transform: rotate(0deg);
+    }
   }
 }

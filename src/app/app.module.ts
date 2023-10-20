@@ -20,7 +20,6 @@ import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
-import { MatInputModule } from '@angular/material/input';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -74,7 +73,6 @@ import { TutorialComponent } from './tutorial/tutorial.component';
     CdkDrag,
     CdkDragPreview,
     DragDropModule,
-    MatInputModule,
     FormsModule,
     MatToolbarModule,
     MatIconModule,
