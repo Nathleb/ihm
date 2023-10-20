@@ -7,7 +7,7 @@ input {
   flex-direction: column;
   justify-content: center;
   align-content: center;
-  border-radius: 20px;
+  border-radius: 15px;
 }
 
 .form-middle-part {
@@ -26,8 +26,8 @@ button {
   width: 100%;
   border-top-left-radius: 0px;
   border-top-right-radius: 0px;
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
 }
 
 .form-field-text {
@@ -37,14 +37,14 @@ button {
   text-align: center;
   min-height: 3vh;
   padding: 0;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
   .text-input {
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
     padding: 5px;
     width: 100%;
-    box-shadow: rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    box-shadow: rgba(44, 44, 44, 0.55) 0px -1px 2px 0px inset;
     transition: box-shadow 0.3s ease;
   }
 
@@ -73,9 +73,9 @@ mat-card-content {
     width: 25%;
     min-width: 40px;
     min-height: 20px;
-    border-radius: 20px;
+    border-radius: 15px;
     overflow: hidden;
-    box-shadow: rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    box-shadow: rgba(44, 44, 44, 0.55) 0px -1px 2px 0px inset;
     transition: box-shadow 0.3s ease;
   }
   .number-input:focus {
@@ -97,7 +97,7 @@ mat-card-content {
     width: 40px;
     height: 20px;
     background-color: var(--color-warn);
-    border-radius: 20px;
+    border-radius: 15px;
     position: relative;
     cursor: pointer;
     transition: background-color 0.3s;

@@ -9,15 +9,13 @@
   .attack-capsule {
     display: flex;
     cursor: help;
-    // border-top: 2px outset rgba(0, 0, 0, 0.315);
-    // border-bottom: 2px outset rgba(0, 0, 0, 0.315);
-    border-right: 15px solid rgba(0, 0, 0, 0.315);
-    border-left: 15px solid rgba(0, 0, 0, 0.315);
-    box-shadow: rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    border-right: 15px solid;
+    border-left: 15px solid;
+    box-shadow: rgba(44, 44, 44, 0.55) 0px -1px 2px 0px inset;
     box-sizing: border-box;
     height: 100%;
     justify-content: center;
     align-items: center;
-    border-radius: 20px;
+    border-radius: 15px;
   }
 }

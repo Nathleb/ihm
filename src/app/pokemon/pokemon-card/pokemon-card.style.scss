@@ -7,11 +7,9 @@ mat-card-header {
   align-items: center;
   justify-content: space-between;
   padding: 0;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
-    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px,
-    rgba(44, 44, 44, 0.35) 0px -1px 2px 0px inset;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  box-shadow: rgba(44, 44, 44, 0.55) 0px -1px 2px 0px inset;
   div {
     margin-left: 5%;
     display: flex;

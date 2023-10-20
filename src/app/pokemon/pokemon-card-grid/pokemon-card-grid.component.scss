@@ -1,5 +1,5 @@
 .mat-card-pokemon {
-  border-radius: 20px;
+  border-radius: 15px;
   cursor: pointer;
   position: relative;
 }
@@ -8,11 +8,6 @@
   display: grid;
   column-gap: 15px;
   row-gap: 15px;
-}
-
-.selected {
-  box-shadow: var(--color-accent) 0px 0px 0px 2px,
-    var(--color-primary) 0px 0px 0px 4px;
 }
 
 @media (max-width: 700px) {
@@ -37,21 +32,4 @@
   .grid-container {
     grid-template-columns: repeat(4, 1fr);
   }
-}
-
-.overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.7);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  pointer-events: none;
-  color: white;
-  font-size: 1.6em;
-  font-weight: 600;
-  border-radius: 20px;
 }
