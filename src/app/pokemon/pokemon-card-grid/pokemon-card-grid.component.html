@@ -2,14 +2,19 @@
   <mat-card
     class="mat-card-pokemon"
     *ngFor="let set of pokemonSets"
-    (click)="pick(set)"
+    (click)="preselect(set)"
     [ngClass]="{
       'box-elevation-5 selected': set.name === selected && !hasPicked
     }"
   >
     <app-pokemon-card [pokemonSet]="set"> </app-pokemon-card>
     <div class="overlay" *ngIf="set.name === selected && !hasPicked">
-      <img class="pokeball" src="../../assets/poke.png" alt="logo" />
+      <img
+        (click)="pick(set)"
+        class="pokeball"
+        src="../../assets/poke.png"
+        alt="logo"
+      />
     </div>
   </mat-card>
 </div>

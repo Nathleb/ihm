@@ -51,6 +51,8 @@
   .pokeball {
     animation: shake 0.5s linear infinite;
     transform-origin: center;
+    cursor: grab;
+    pointer-events: all;
   }
 
   @keyframes shake {

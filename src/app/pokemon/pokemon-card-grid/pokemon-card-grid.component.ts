@@ -24,14 +24,15 @@ export class PokemonCardGridComponent {
   @Output() addOrRemoveFromTeam: EventEmitter<PokemonSet> = new EventEmitter<PokemonSet>();
   selected: string;
 
+  preselect(set: PokemonSet) {
+    this.selected = set.name;
+    this.addOrRemoveFromTeam.emit(set);
+  }
+
   pick(set: PokemonSet) {
     if (set.name === this.selected && !this.hasPicked) {
       this.selected = '';
       this.picked.emit(set.name);
-    }
-    else {
-      this.selected = set.name;
-      this.addOrRemoveFromTeam.emit(set);
     }
   }
 }
